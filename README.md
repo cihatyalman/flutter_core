@@ -12,7 +12,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
 ### Extensions ( uzantılar ):
 + #### conversion_tool: Bazı tür dönüşümleri yapmanıza yardımcı olur.
-  - String -> Byte veya ListltStringlt -> Byte gibi dönüşümleri yapabilirsiniz.
+  - String -> Byte veya List&ltString&lt -> Byte gibi dönüşümleri yapabilirsiniz.
   - Uint8List(Byte) -> Image veya Uint8List(Byte) -> String gibi dönüşümleri yapabilirsiniz.
   - List<IBaseEntity> -> List<Map> gibi dönüşümleri yapabilirsiniz.
 #
