@@ -2,10 +2,9 @@
 Projelerinizde kullanabileceğiniz çekirdek katman.
 #
 ### Kullanılan kütüphaneler:
-- sqlite3
-- datetime
-- json
-- os
+- sqflite
+- firebase_core
+- firebase_database
 #
 "Core" klasörünü projenizin ana dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
 
