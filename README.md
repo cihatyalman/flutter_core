@@ -12,9 +12,9 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
 ### Uzantılar ( utilities/extensions ):
 + #### conversion_tool: Bazı tür dönüşümleri yapmanıza yardımcı olur.
-  - String -> Byte veya List< String> -> Byte gibi dönüşümleri yapabilirsiniz.
-  - Uint8List(Byte) -> Image veya Uint8List(Byte) -> String gibi dönüşümleri yapabilirsiniz.
-  - List< IBaseEntity> -> List< Map> gibi dönüşümleri yapabilirsiniz.
+  - "String -> Byte" veya "List< String> -> Byte" gibi dönüşümleri yapabilirsiniz.
+  - "Uint8List(Byte) -> Image" veya "Uint8List(Byte) -> String" gibi dönüşümleri yapabilirsiniz.
+  - "List< IBaseEntity> -> List< Map>" gibi dönüşümleri yapabilirsiniz.
 #
 ### Result ( exceptions/result_exceptions ):
 Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz.
