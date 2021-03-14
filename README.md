@@ -15,7 +15,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - String -> Byte veya List<String> -> Byte gibi dönüşümleri yapabilirsiniz.
   - Uint8List(Byte) -> Image veya Uint8List(Byte) -> String gibi dönüşümleri yapabilirsiniz.
   - List<IBaseEntity> -> List<Map> gibi dönüşümleri yapabilirsiniz.
-  - &lt , &lt< , '&lt', '%lt<'
+  - &lt , &lt< , '&lt', '&lt<'
 #
 ### Result ( exceptions/result_exceptions ):
 Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz.
