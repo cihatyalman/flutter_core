@@ -34,4 +34,4 @@ Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implemen
 ### Dosya İşlemleri ( file_operations ):
 Verilerinizi bir dosyada tutmak istiyorsanız bu paketi kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
 #
-
+## NOT: Yakında tüm paketlerin kullanım örnekleri yayınlanacaktır.
