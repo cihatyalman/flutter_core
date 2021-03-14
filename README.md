@@ -32,6 +32,6 @@ Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanab
 Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implement alın.
 #
 ### Dosya İşlemleri ( file_operations ):
-Verilerinizi bir dosyada tutmak isterseniz kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
+Verilerinizi bir dosyada tutmak istiyorsanız bu paketi kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
 #
 
