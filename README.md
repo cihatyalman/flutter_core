@@ -9,10 +9,13 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 "Core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.(entities hariç)
 
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
+'''html
+<html>
+</html>
 #
 ### Extensions ( uzantılar ):
 + #### conversion_tool: Bazı tür dönüşümleri yapmanıza yardımcı olur.
-  '- String -> Byte veya List<String> -> Byte gibi dönüşümleri yapabilirsiniz.'
+  - String -> Byte veya List<String> -> Byte gibi dönüşümleri yapabilirsiniz.
   - Uint8List(Byte) -> Image veya Uint8List(Byte) -> String gibi dönüşümleri yapabilirsiniz.
   - List<IBaseEntity> -> List<Map> gibi dönüşümleri yapabilirsiniz.
 #
