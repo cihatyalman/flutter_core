@@ -10,10 +10,12 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
-### Decorator ( decorators):
-Bir fonksiyon işleve başlamadan önce, işlevi bittiğinde veya işlev sırasında bir hata aldığında başka bir işlev çalıştırmasını istiyorsanız kullanabilirsiniz.
-
-Örnek olarak, işlevden önce bir doğrulama yaptırabilirsiniz, işlevden sonra bir log kaydı yaptırabilirsiniz, hata aldığında işlevden başka bir veri dönüşü yaptırabilirsiniz.
+### Extensions ( uzantılar ):
+#### conversion_tool:
+Bazı tür dönüşümleri yapmanıza yardımcı olur.
+String -> Byte veya List<String> -> Byte gibi dönüşümleri yapabilirsiniz.
+Uint8List(Byte) -> Image veya Uint8List(Byte) -> String gibi dönüşümleri yapabilirsiniz.
+List<IBaseEntity> -> List<Map> gibi dönüşümleri yapabilirsiniz.
 #
 ### Result (results):
 Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz. 
