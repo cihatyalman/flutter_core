@@ -6,7 +6,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 - firebase_core
 - firebase_database
 #
-"Core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.(entities hariç)
+"Core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.(entities klasörü hariç)
 
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
