@@ -17,9 +17,9 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - List<IBaseEntity> -> List<Map> gibi dönüşümleri yapabilirsiniz.
 #
 ### Result (results):
-Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz. 
+Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz.
 
-Örnek olarak, "success, message" döndürebilirsiniz veya "success, message, data" döndürebilirsiniz.
+Örnek olarak, "success, message" döndürebilirsiniz veya "data, success, message" döndürebilirsiniz.
 #
 ### Veri Yönetimi ( data_access ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
