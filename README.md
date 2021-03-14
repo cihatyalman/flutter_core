@@ -21,17 +21,17 @@ Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsi
 
 Örnek olarak, "success, message" döndürebilirsiniz veya "data, success, message" döndürebilirsiniz.
 #
+### Firebase Database ( fb_database_operations ):
+Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
+
+Not: Varlıklarınızı entities klasöründeki IFbEntity sınıfından implement alın.
+#
 ### Local Database ( sqflite_operations ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
 Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implement alın.
 #
-### Datetime İşlemleri ( datetime_operations ):
-Geçerli tarihi (gmt ayarlanabilir) timestamp olarak kullanabilirsiniz. Ayrıca istenildiği zaman datetime ve timestamp arası dönüşümler yapabilirsiniz.
+### Dosya İşlemleri ( file_operations ):
+Verilerinizi bir dosyada tutmak isterseniz kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
 #
-### Json Dosya İşlemleri ( json_file_operations ):
-Json türünde olan verilerinizi bir dosyada tutmak isterseniz kullanabilirsiniz.
-#
-
-
 
