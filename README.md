@@ -21,12 +21,12 @@ Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsi
 
 Örnek olarak, "success, message" döndürebilirsiniz veya "data, success, message" döndürebilirsiniz.
 #
-### Firebase Database ( fb_database_operations ):
+### Firebase Database ( fb_database ):
 Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
 Not: Varlıklarınızı entities klasöründeki IFbEntity sınıfından implement alın.
 #
-### Local Database ( sqflite_operations ):
+### Local Database ( local_database ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
 Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implement alın.
