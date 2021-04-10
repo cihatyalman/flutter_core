@@ -44,7 +44,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IFbEntity>{
   @override
   Future<bool> hasChild([String childPath="/"]) async{
     try{
-      var result = await get(_rootRef.child(childPath).path);
+      var result = await get(childPath);
       return result.value==null ? false : true;
     }
     catch(e){
