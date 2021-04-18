@@ -34,4 +34,7 @@ Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implemen
 ### Dosya İşlemleri ( file_operations ):
 Verilerinizi bir dosyada tutmak istiyorsanız bu paketi kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
 #
+### API Servisleri ( api_service ):
+WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
+#
 
