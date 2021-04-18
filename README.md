@@ -5,6 +5,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 - sqflite
 - firebase_core
 - firebase_database
+- http
 #
 "Core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.(entities klasörü hariç)
 
