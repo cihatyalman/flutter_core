@@ -7,7 +7,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
   -  Türkçe harfleri(ç,ğ,ı,ö,ş,ü) ingilizce harflere(c,g,i,o,s,u) çevirir.
 + "utilities" klasörüne "helper_functions" scripti eklendi. 
   - Küçük yardımcı metotlar ile işlemlerinizi daha hızlı ve kolay bir şekilde yapabilirsiniz.
-
+#
 ### Kullanılan kütüphaneler:
 - sqflite
 - firebase_core
