@@ -11,6 +11,9 @@ extension StringExtension on String{
     List<int> intList = List.generate(stringList.length, (index) => int.tryParse(stringList[index]));
     return Uint8List.fromList(intList);
   }
+  String get toEnglishAlphabet => this
+    .replaceAll("ç", "c").replaceAll("ğ", "g").replaceAll("ı", "i")
+    .replaceAll("ö", "o").replaceAll("ş", "s").replaceAll("ü", "u");
 }
 
 extension Uint8ListExtension on Uint8List{
