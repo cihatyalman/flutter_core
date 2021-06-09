@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 
 class ApiService implements IApiService{
   // Uri(scheme: "https",host: "example.com",path: "/path")
+  // Uri.parse("https://example.com/path")
+  
   final Uri _uri;
   ApiService(this._uri);
 
