@@ -12,16 +12,10 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
-### Uzantılar ( utilities/extensions ):
-+ #### conversion_tool: Bazı tür dönüşümleri yapmanıza yardımcı olur.
-  - "String -> Byte" veya "List< String> -> Byte" gibi dönüşümleri yapabilirsiniz.
-  - "Uint8List(Byte) -> Image" veya "Uint8List(Byte) -> String" gibi dönüşümleri yapabilirsiniz.
-  - "List< IBaseEntity> -> List< Map>" gibi dönüşümleri yapabilirsiniz.
-#
-### Result ( exceptions/result_exceptions ):
-Bir fonsiyonun belli bir kalıpta sonuç dönmesini istiyorsanız kullanabilirsiniz.
-
-Örnek olarak, "success, message" döndürebilirsiniz veya "data, success, message" döndürebilirsiniz.
+### Araçlar ( utilities ):
++ #### extensions: Bazı tür dönüşümleri yapmanıza yardımcı olur.
++ #### helper_functions: Kod yazarken sıze yardımcı olacak mini fonksiyonlar.
++ #### exceptions: Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
 ### Firebase Database ( fb_database ):
 Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
