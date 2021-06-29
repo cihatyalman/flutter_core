@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import '../abstract/i_db_base.dart';
 
-class DbBase implements IDbBase{
+class DbBase implements IDbBase {
   Database _db;
   String _dbName;
   DbBase(this._dbName);
@@ -10,82 +10,97 @@ class DbBase implements IDbBase{
   Future<Database> get db async => _db ?? initializeDb(_dbName);
 
   @override
-  Future<Database> initializeDb(String dbName) async{
-    String dbPath = (await getDatabasesPath())+"/"+dbName;
-    return await openDatabase(dbPath,version: 1);
+  Future<Database> initializeDb(String dbName) async {
+    String dbPath = (await getDatabasesPath()) + "/" + dbName;
+    return await openDatabase(dbPath, version: 1);
   }
 
   @override
-  Future<bool> deleteDb(Database db) async{
-    try{
+  Future<bool> deleteDb(Database db) async {
+    try {
       await deleteDatabase(db.path);
       return true;
-    }
-    catch(e){
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// createTable( "CREATE TABLE IF NOT EXISTS tableName (value1 integer primary key, value2 text, value3 integer)" );
+  /// ```
   @override
-  Future<bool> createTable(String createTableCode) async {
+  Future<bool> createTable(String code) async {
     try {
-      await db.then((value) async => await value.execute(createTableCode));
+      await db.then((value) async => await value.execute(code));
       return true;
-    }
-    catch(e){
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// getTable( "tableName" );
+  /// ```
   @override
   Future<List<Map>> getTable(String tableName) async {
     try {
       return await db.then((value) async => await value.query(tableName));
-    }
-    catch(e){
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// getFromQuery( "SELECT * FROM tableName" );
+  /// ```
   @override
-  Future<List<Map>> getFromQuery(String queryCode) async{
-    try{
-      return await db.then((value) async => await value.rawQuery(queryCode));
-    }
-    catch(e){
-      return null;
-    }
-  }
-
-  @override
-  Future<int> add(String tableName,Map map) async {
+  Future<List<Map>> getFromQuery(String code) async {
     try {
-      return await db.then((value) async => await value.insert(tableName, map));
-    }
-    catch(e){
+      return await db.then((value) async => await value.rawQuery(code));
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// insert( "INSERT INTO tableName (key1, key2, key3) VALUES(value1 , 'value2', value3)" );
+  /// ```
   @override
-  Future<int> update(String tableName,String idName,Map map) async{
+  Future<int> insert(String code) async {
     try {
-      return await db.then((value) async => await value.update(tableName, map,where: "$idName=?",whereArgs: [map["$idName"]]));
-    }
-    catch(e){
+      return await db.then((value) async => await value.rawInsert(code));
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// update( "UPDATE tableName SET value2 = 'value22', value3 = value33 WHERE value1 = 1" );
+  /// ```
   @override
-  Future<int> delete(String tableName,String idName,int id) async{
+  Future<int> update(String code) async {
     try {
-      return await db.then((value) async => await value.rawDelete("delete from $tableName where $idName=$id"));
-      //return await db.then((value) async = await value.delete(tableName,where: "$idName=?",whereArgs: [$idName]));
-    }
-    catch(e){
+      return await db.then((value) async => await value.rawUpdate(code));
+    } catch (e) {
       return null;
     }
   }
 
+  /// Example Usage :
+  /// ```
+  /// delete( "DELETE FROM tableName WHERE value1 = 1" );
+  /// ```
+  @override
+  Future<int> delete(String code) async {
+    try {
+      return await db.then((value) async => await value.rawDelete(code));
+    } catch (e) {
+      return null;
+    }
+  }
 }
