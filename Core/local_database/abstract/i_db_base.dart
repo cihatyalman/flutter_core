@@ -1,22 +1,22 @@
 import 'package:sqflite/sqflite.dart';
 
-class IDbBase{
+class IDbBase {
   // ignore: missing_return
-  Future<Database> get db{}
+  Future<Database> get db {}
   // ignore: missing_return
-  Future<Database> initializeDb(String dbName){}
+  Future<Database> initializeDb(String dbName) {}
   // ignore: missing_return
-  Future<bool> deleteDb(Database db){}
+  Future<bool> deleteDb(Database db) {}
   // ignore: missing_return
-  Future<bool> createTable(String createTableCode){}
+  Future<bool> createTable(String code) {}
   // ignore: missing_return
-  Future<List<Map>> getTable(String tableName){}
+  Future<List<Map>> getTable(String tableName) {}
   // ignore: missing_return
-  Future<List<Map>> getFromQuery(String queryCode){}
+  Future<List<Map>> getFromQuery(String code) {}
   // ignore: missing_return
-  Future<int> add(String tableName,Map map){}
+  Future<int> insert(String code) {}
   // ignore: missing_return
-  Future<int> update(String tableName,String idName,Map map){}
+  Future<int> update(String code) {}
   // ignore: missing_return
-  Future<int> delete(String tableName,String idName,int id){}
+  Future<int> delete(String code) {}
 }
