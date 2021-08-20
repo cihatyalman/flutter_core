@@ -10,7 +10,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IFbEntity>{
   DatabaseReference get ref => _rootRef;
 
   @override
-  Future<bool> add(IFbEntity entity,[String childPath="/"]) async{
+  Future<bool?> add(IFbEntity entity,[String childPath="/"]) async{
     try {
       await _rootRef.child(childPath).child(entity.key).set(entity.toMap());
       return true;
@@ -21,7 +21,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IFbEntity>{
   }
 
   @override
-  Future<DataSnapshot> get([String childPath="/"]) async{
+  Future<DataSnapshot?> get([String childPath="/"]) async{
     try{
       return await _rootRef.child(childPath).once();
     }
@@ -31,7 +31,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IFbEntity>{
   }
 
   @override
-  Future<bool> delete([String childPath="/"]) async{
+  Future<bool?> delete([String childPath="/"]) async{
     try{
       await _rootRef.child(childPath).remove();
       return true;
@@ -42,10 +42,10 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IFbEntity>{
   }
 
   @override
-  Future<bool> hasChild([String childPath="/"]) async{
+  Future<bool?> hasChild([String childPath="/"]) async{
     try{
       var result = await get(childPath);
-      return result.value==null ? false : true;
+      return result?.value==null ? false : true;
     }
     catch(e){
       return null;

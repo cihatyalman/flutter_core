@@ -2,12 +2,12 @@ import 'package:sqflite/sqflite.dart';
 import '../abstract/i_db_base.dart';
 
 class DbBase implements IDbBase {
-  Database _db;
+  Database? _db;
   String _dbName;
   DbBase(this._dbName);
 
   @override
-  Future<Database> get db async => _db ?? initializeDb(_dbName);
+  Future<Database> get db async => _db ??= await initializeDb(_dbName);
 
   @override
   Future<Database> initializeDb(String dbName) async {
@@ -16,7 +16,7 @@ class DbBase implements IDbBase {
   }
 
   @override
-  Future<bool> deleteDb(Database db) async {
+  Future<bool?> deleteDb(Database db) async {
     try {
       await deleteDatabase(db.path);
       return true;
@@ -30,7 +30,7 @@ class DbBase implements IDbBase {
   /// createTable( "CREATE TABLE IF NOT EXISTS tableName (value1 integer primary key, value2 text, value3 integer)" );
   /// ```
   @override
-  Future<bool> createTable(String code) async {
+  Future<bool?> createTable(String code) async {
     try {
       await db.then((value) async => await value.execute(code));
       return true;
@@ -44,7 +44,7 @@ class DbBase implements IDbBase {
   /// getTable( "tableName" );
   /// ```
   @override
-  Future<List<Map>> getTable(String tableName) async {
+  Future<List<Map>?> getTable(String tableName) async {
     try {
       return await db.then((value) async => await value.query(tableName));
     } catch (e) {
@@ -57,7 +57,7 @@ class DbBase implements IDbBase {
   /// getFromQuery( "SELECT * FROM tableName" );
   /// ```
   @override
-  Future<List<Map>> getFromQuery(String code) async {
+  Future<List<Map>?> getFromQuery(String code) async {
     try {
       return await db.then((value) async => await value.rawQuery(code));
     } catch (e) {
@@ -70,7 +70,7 @@ class DbBase implements IDbBase {
   /// insert( "INSERT INTO tableName (key1, key2, key3) VALUES(value1 , 'value2', value3)" );
   /// ```
   @override
-  Future<int> insert(String code) async {
+  Future<int?> insert(String code) async {
     try {
       return await db.then((value) async => await value.rawInsert(code));
     } catch (e) {
@@ -83,7 +83,7 @@ class DbBase implements IDbBase {
   /// update( "UPDATE tableName SET value2 = 'value22', value3 = value33 WHERE value1 = 1" );
   /// ```
   @override
-  Future<int> update(String code) async {
+  Future<int?> update(String code) async {
     try {
       return await db.then((value) async => await value.rawUpdate(code));
     } catch (e) {
@@ -96,7 +96,7 @@ class DbBase implements IDbBase {
   /// delete( "DELETE FROM tableName WHERE value1 = 1" );
   /// ```
   @override
-  Future<int> delete(String code) async {
+  Future<int?> delete(String code) async {
     try {
       return await db.then((value) async => await value.rawDelete(code));
     } catch (e) {

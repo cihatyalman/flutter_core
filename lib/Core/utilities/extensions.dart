@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../../entities/i_base_entity.dart';
+import '../entities/i_base_entity.dart';
 import 'package:flutter/material.dart';
 
 extension StringExtension on String {
@@ -24,12 +24,12 @@ extension Uint8ListExtension on Uint8List {
 }
 
 extension ListExtension on List<IBaseEntity> {
-  List<Map> get toMapList =>
+  List<Map?> get toMapList =>
       List.generate(this.length, (index) => this[index].toMap());
 }
 
 extension ColorExtension on Color {
-  Color changeRGB({int red, int green, int blue}) {
+  Color changeRGB({int? red, int? green, int? blue}) {
     Color tempColor = this;
     if (red != null && red >= 0 && red <= 255)
       tempColor = tempColor.withRed(red);

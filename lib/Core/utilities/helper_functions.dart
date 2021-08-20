@@ -8,7 +8,7 @@ class HelperFunctions {
   }
 
   // #region Get
-  String getTimestamp([DateTime date]) {
+  String getTimestamp([DateTime? date]) {
     date ??= DateTime.now();
     return date.millisecondsSinceEpoch
         .toString()
@@ -16,7 +16,7 @@ class HelperFunctions {
   }
 
   DateTime getDateTime(String timestamp) {
-    return DateTime.fromMillisecondsSinceEpoch(int.tryParse(timestamp) * 1000);
+    return DateTime.fromMillisecondsSinceEpoch(int.tryParse(timestamp)! * 1000);
   }
   // #endregion
 

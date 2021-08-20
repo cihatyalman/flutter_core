@@ -1,8 +1,8 @@
 import '../abstract/i_result.dart';
 
 class Result implements IResult{
-  bool _success;
-  String _message;
+  late bool _success;
+  late String _message;
   @override
   String get message => _message;
 
