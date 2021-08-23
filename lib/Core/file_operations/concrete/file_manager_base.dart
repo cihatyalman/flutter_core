@@ -11,7 +11,6 @@ class FileManagerBase implements IFileManagerBase{
   assert(_appDir.startsWith("/"));
 
   _validationPath(String filePath){
-    assert(filePath != null);
     assert(filePath.isNotEmpty);
     assert(filePath.startsWith("/"));
     assert(filePath.endsWith(".txt") || filePath.endsWith(".png") 
@@ -35,7 +34,7 @@ class FileManagerBase implements IFileManagerBase{
     return File("${dir.path}$filePath");
   }
 
-  Future<File> writeFileFromString(String filePath,String dataString) async {
+  Future<File?> writeFileFromString(String filePath,String dataString) async {
     _validationPath(filePath);
     try {
       final File file = await localFileWithController(filePath);
@@ -47,7 +46,7 @@ class FileManagerBase implements IFileManagerBase{
     }
   }
 
-  Future<String> readFileToString(String filePath) async {
+  Future<String?> readFileToString(String filePath) async {
     _validationPath(filePath);
     try {
       final File file = await localFileWithController(filePath);
@@ -60,7 +59,7 @@ class FileManagerBase implements IFileManagerBase{
     }
   }
 
-  Future<File> writeFileFromBytes(String filePath,Uint8List dataBytes) async {
+  Future<File?> writeFileFromBytes(String filePath,Uint8List dataBytes) async {
     _validationPath(filePath);
     try {
       final File file = await localFileWithController(filePath);
@@ -72,7 +71,7 @@ class FileManagerBase implements IFileManagerBase{
     }
   }
 
-  Future<Uint8List> readFileToBytes(String filePath) async {
+  Future<Uint8List?> readFileToBytes(String filePath) async {
     _validationPath(filePath);
     try {
       final File file = await localFileWithController(filePath);
