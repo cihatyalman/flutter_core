@@ -13,24 +13,24 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
 ### Araçlar ( utilities ):
-+ #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/Core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
-+ #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/Core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
-+ #### [results](https://github.com/cihatyalman/flutter_core/tree/master/Core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
++ #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/lib/Core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
++ #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/lib/Core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
++ #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
-### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/Core/fb_database) ):
+### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/fb_database) ):
 Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
 Not: Varlıklarınızı entities klasöründeki IFbEntity sınıfından implement alın.
 #
-### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/Core/local_database) ):
+### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
 Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implement alın.
 #
-### Dosya İşlemleri ( [file_operations](https://github.com/cihatyalman/flutter_core/tree/master/Core/file_operations) ):
+### Dosya İşlemleri ( [file_operations](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/file_operations) ):
 Verilerinizi bir dosyada tutmak istiyorsanız bu paketi kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
 #
-### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/Core/api_service) ):
+### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/api_service) ):
 WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 #
 
