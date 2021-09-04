@@ -20,13 +20,27 @@ class HelperFunctions {
   }
   // #endregion
 
-  // #region Show
+  // #region Actions
   showSnackBar(BuildContext context, String text, [int millisecond = 3000]) {
     final snackBar = SnackBar(
       content: Text(text),
       duration: Duration(milliseconds: millisecond),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  openScene(BuildContext context, String route,
+      {bool backFeatureActive = false, Object? settings}) {
+    WidgetsBinding.instance?.addPostFrameCallback(
+      (_) => backFeatureActive
+          ? Navigator.pushNamed(context, route, arguments: settings)
+          : Navigator.pushNamedAndRemoveUntil(
+              context,
+              route,
+              (Route route) => false,
+              arguments: settings,
+            ),
+    );
   }
   // #endregion
 

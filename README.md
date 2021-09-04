@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 26.08.2021 ]
+[ Update: 04.09.2021 ]
 
 ### Kullanılan kütüphaneler:
 - sqflite
@@ -15,7 +15,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 ### Araçlar ( utilities ):
 + #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/Core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
 + #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/Core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
-+ #### [exceptions](https://github.com/cihatyalman/flutter_core/tree/master/Core/utilities/exceptions): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
++ #### [results](https://github.com/cihatyalman/flutter_core/tree/master/Core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
 ### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/Core/fb_database) ):
 Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.

@@ -1,4 +1,4 @@
-class IApiService{
-  Future? postData(Map json){}
-  Future? getData(){}
+class IApiService {
+  Future? postData({required String path, required Map json, Map<String, String>? headers}) {}
+  Future? getData({required String path, Map<String, String>? headers}) {}
 }
