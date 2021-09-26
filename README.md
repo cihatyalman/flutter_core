@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 04.09.2021 ]
+[ Update: 26.09.2021 ]
 
 ### Kullanılan kütüphaneler:
 - sqflite
@@ -20,12 +20,12 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 ### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/fb_database) ):
 Verilerinizi firebase veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
-Not: Varlıklarınızı entities klasöründeki IFbEntity sınıfından implement alın.
+Not: Varlıklarınızı entities klasöründeki IBaseEntity sınıfından implement alın.
 #
 ### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 
-Not: Varlıklarınızı entities klasöründeki IDbEntity sınıfından implement alın.
+Not: Varlıklarınızı entities klasöründeki IBaseEntity sınıfından implement alın.
 #
 ### Dosya İşlemleri ( [file_operations](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/file_operations) ):
 Verilerinizi bir dosyada tutmak istiyorsanız bu paketi kullanabilirsiniz. Bu veriler yazı veya resim olabilir.
