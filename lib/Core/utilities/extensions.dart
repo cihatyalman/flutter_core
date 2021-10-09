@@ -1,20 +1,28 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import '../entities/i_base_entity.dart';
 import 'package:flutter/material.dart';
+import '../entities/i_base_entity.dart';
+
+extension ContextExtension on BuildContext {
+  MediaQueryData get getMediaQuery => MediaQuery.of(this);
+  ThemeData get getTheme => Theme.of(this);
+
+  double dynamicWidth(double value) => MediaQuery.of(this).size.width * value;
+  double dynamicHeight(double value) => MediaQuery.of(this).size.height * value;
+}
 
 extension StringExtension on String {
   Uint8List get toBytesFromString => Uint8List.fromList(utf8.encode(this));
   Uint8List get toBytesFromBase64 => base64Decode(this);
 
   String get toEnglishAlphabet => this
-      .replaceAll("ç", "c")
-      .replaceAll("ğ", "g")
-      .replaceAll("ı", "i")
-      .replaceAll("ö", "o")
-      .replaceAll("ş", "s")
-      .replaceAll("ü", "u");
+      .replaceAll("ç", "c").replaceAll("Ç", "C")
+      .replaceAll("ğ", "g").replaceAll("Ğ", "G")
+      .replaceAll("ı", "i").replaceAll("İ", "I")
+      .replaceAll("ö", "o").replaceAll("Ö", "O")
+      .replaceAll("ş", "s").replaceAll("Ş", "S")
+      .replaceAll("ü", "u").replaceAll("Ü", "U");
 }
 
 extension Uint8ListExtension on Uint8List {
@@ -26,17 +34,4 @@ extension Uint8ListExtension on Uint8List {
 extension ListExtension on List<IBaseEntity> {
   List<Map?> get toMapList =>
       List.generate(this.length, (index) => this[index].toMap());
-}
-
-extension ColorExtension on Color {
-  Color changeRGB({int? red, int? green, int? blue}) {
-    Color tempColor = this;
-    if (red != null && red >= 0 && red <= 255)
-      tempColor = tempColor.withRed(red);
-    if (green != null && green >= 0 && green <= 255)
-      tempColor = tempColor.withGreen(green);
-    if (blue != null && blue >= 0 && blue <= 255)
-      tempColor = tempColor.withBlue(blue);
-    return tempColor;
-  }
 }

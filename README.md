@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 26.09.2021 ]
+[ Update: 09.10.2021 ]
 
 ### Kullanılan kütüphaneler:
 - sqflite
