@@ -18,10 +18,10 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 + #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/lib/Core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
-### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/firebase_database) ):
+### Firebase Database ( [firebase_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/firebase_database) ):
 Verilerinizi firebase veritabanında(Realtime Database) yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 #
-### Firebase Database ( [fb_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/firebase_firestore) ):
+### Firestore Database ( [firebase_firestore](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/firebase_firestore) ):
 Verilerinizi firebase veritabanında(Firestore Database) yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 #
 ### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/local_database) ):
