@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import '../entities/i_base_entity.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get getMediaQuery => MediaQuery.of(this);
@@ -29,9 +28,4 @@ extension Uint8ListExtension on Uint8List {
   Image get toImageFromBytes => Image.memory(this);
   String get toStringFromBytes => utf8.decode(this);
   String get toBase64FromBytes => base64Encode(this);
-}
-
-extension ListExtension on List<IBaseEntity> {
-  List<Map?> get toMapList =>
-      List.generate(this.length, (index) => this[index].toMap());
 }

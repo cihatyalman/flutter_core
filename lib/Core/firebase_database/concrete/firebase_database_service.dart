@@ -1,18 +1,20 @@
-import 'package:core_base/Core/entities/i_base_entity.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../abstract/i_fb_database_base.dart';
+import '../abstract/i_firebase_database_service.dart';
 
-abstract class FbDatabaseBase implements IFbDatabaseBase<IBaseEntity> {
+class FirebaseDatabaseService implements IFirebaseDatabaseService {
   DatabaseReference _rootRef;
-  FbDatabaseBase(this._rootRef);
+  FirebaseDatabaseService(this._rootRef);
 
   @override
   DatabaseReference get ref => _rootRef;
 
   @override
-  Future<bool?> add(IBaseEntity entity, [String childPath = "/"]) async {
+  Future<bool?> add({
+    required Map<String, dynamic> json,
+    String childPath = "/",
+  }) async {
     try {
-      await _rootRef.child(childPath).set(entity.toMap());
+      await _rootRef.child(childPath).set(json);
       return true;
     } catch (e) {
       return null;
@@ -20,7 +22,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IBaseEntity> {
   }
 
   @override
-  Future<DataSnapshot?> get([String childPath = "/"]) async {
+  Future<DataSnapshot?> get({String childPath = "/"}) async {
     try {
       return await _rootRef.child(childPath).once();
     } catch (e) {
@@ -29,7 +31,7 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IBaseEntity> {
   }
 
   @override
-  Future<bool?> delete([String childPath = "/"]) async {
+  Future<bool?> delete({String childPath = "/"}) async {
     try {
       await _rootRef.child(childPath).remove();
       return true;
@@ -39,9 +41,9 @@ abstract class FbDatabaseBase implements IFbDatabaseBase<IBaseEntity> {
   }
 
   @override
-  Future<bool?> hasChild([String childPath = "/"]) async {
+  Future<bool?> hasChild({String childPath = "/"}) async {
     try {
-      var result = await get(childPath);
+      var result = await get(childPath: childPath);
       return result?.value == null ? false : true;
     } catch (e) {
       return null;

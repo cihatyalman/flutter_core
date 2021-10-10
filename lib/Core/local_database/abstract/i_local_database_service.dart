@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
-class IDbBase {
+class ILocalDatabaseService {
   Future<Database>? get db {}
   Future<Database>? initializeDb(String dbName) {}
   Future<bool?>? deleteDb(Database db) {}

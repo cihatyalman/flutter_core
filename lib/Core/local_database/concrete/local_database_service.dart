@@ -1,10 +1,10 @@
 import 'package:sqflite/sqflite.dart';
-import '../abstract/i_db_base.dart';
+import '../abstract/i_local_database_service.dart';
 
-class DbBase implements IDbBase {
+class LocalDatabaseService implements ILocalDatabaseService {
   Database? _db;
   String _dbName;
-  DbBase(this._dbName);
+  LocalDatabaseService(this._dbName);
 
   @override
   Future<Database> get db async => _db ??= await initializeDb(_dbName);

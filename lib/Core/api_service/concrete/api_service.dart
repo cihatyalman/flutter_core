@@ -14,7 +14,10 @@ class ApiService implements IApiService {
   };
 
   @override
-  Future getData({required String path, Map<String, String>? headers}) async {
+  Future getData({
+    required String path,
+    Map<String, String>? headers,
+  }) async {
     var response = await http.get(
       Uri.parse(_baseUrl + path),
       headers: headers ?? _headers,
@@ -23,7 +26,11 @@ class ApiService implements IApiService {
   }
 
   @override
-  Future postData({required String path, required Map json, Map<String, String>? headers}) async {
+  Future postData({
+    required String path,
+    required Map json,
+    Map<String, String>? headers,
+  }) async {
     var response = await http.post(
       Uri.parse(_baseUrl + path),
       headers: headers ?? _headers,
