@@ -27,6 +27,6 @@ Verilerinizi firebase veritabanında(Firestore Database) yönetmek istiyorsanız
 ### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 #
-### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/Core/api_service) ):
+### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/api_service) ):
 WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 #
