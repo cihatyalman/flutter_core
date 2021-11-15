@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 31.10.2021 ]
+[ Update: 15.11.2021 ]
 
 ### Kullanılan kütüphaneler:
 - http
