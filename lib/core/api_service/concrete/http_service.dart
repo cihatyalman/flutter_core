@@ -4,10 +4,10 @@ import 'dart:io';
 import '../abstract/i_api_service.dart';
 import 'package:http/http.dart' as http;
 
-class ApiService implements IApiService {
+class HttpService implements IApiService {
   final String _baseUrl;
 
-  ApiService(this._baseUrl);
+  HttpService(this._baseUrl);
 
   final Map<String, String> _headers = {
     HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
