@@ -4,6 +4,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 
 ### Kullanılan kütüphaneler:
 - http
+- dio
 - sqflite
 - firebase_core
 - firebase_database
