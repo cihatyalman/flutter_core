@@ -19,7 +19,7 @@ class DioService implements IApiService {
   }
 
   @override
-  Future getData({
+  Future get({
     required String path,
     Map<String, String>? headers,
   }) async {
@@ -29,11 +29,13 @@ class DioService implements IApiService {
         options: Options(headers: headers ?? this.headers),
       );
       return jsonDecode(response.toString());
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
-  Future postData({
+  Future post({
     required String path,
     required Map json,
     Map<String, String>? headers,
@@ -45,7 +47,9 @@ class DioService implements IApiService {
         data: jsonEncode(json),
       );
       return jsonDecode(response.toString());
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   }
 }
 

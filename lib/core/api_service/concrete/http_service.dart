@@ -14,28 +14,37 @@ class HttpService implements IApiService {
   };
 
   @override
-  Future getData({
+  Future get({
     required String path,
     Map<String, String>? headers,
   }) async {
-    var response = await http.get(
-      Uri.parse(_baseUrl + path),
-      headers: headers ?? _headers,
-    );
-    return jsonDecode(response.body);
+    if (headers != null) _headers.addEntries(headers.entries);
+    try {
+      var response = await http.get(
+        Uri.parse(_baseUrl + path),
+        headers: _headers,
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
-  Future postData({
+  Future post({
     required String path,
     required Map json,
     Map<String, String>? headers,
   }) async {
-    var response = await http.post(
-      Uri.parse(_baseUrl + path),
-      headers: headers ?? _headers,
-      body: jsonEncode(json),
-    );
-    return jsonDecode(response.body);
+    try {
+      var response = await http.post(
+        Uri.parse(_baseUrl + path),
+        headers: headers ?? _headers,
+        body: jsonEncode(json),
+      );
+      return jsonDecode(response.body);
+    } catch (e) {
+      return null;
+    }
   }
 }
