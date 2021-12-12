@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../abstract/i_firestore_service.dart';
 
-class FirestoreService implements IFirestoreService {
+class FirestoreService{
   final FirebaseFirestore firestore;
   final String collectionName;
   FirestoreService({required this.firestore, required this.collectionName});
 
-  @override
   Future<String?> add({required Map<String, dynamic> json}) async {
     try {
       var docRef = await firestore.collection(collectionName).add(json);
@@ -16,7 +14,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<String?> addToSubCollection({
     required String id,
     required String subCollectionName,
@@ -34,7 +31,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<bool?> addWithId({
     required String id,
     required Map<String, dynamic> json,
@@ -47,7 +43,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<bool?> addWithIdToSubCollection({
     required String id,
     required String subCollectionName,
@@ -67,7 +62,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<bool?> delete({required String id}) async {
     try {
       await firestore.collection(collectionName).doc(id).delete();
@@ -77,7 +71,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<List?> get() async {
     try {
       var snapshot = await firestore.collection(collectionName).get();
@@ -87,7 +80,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<List?> getFromSubCollection({
     required String id,
     required String subCollectionName,
@@ -104,7 +96,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<Map?> getWithId({required String id}) async {
     try {
       var snapshot = await firestore.collection(collectionName).doc(id).get();
@@ -114,7 +105,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<Map?> getWithIdFromSubCollection({
     required String id,
     required String subColletionName,
@@ -133,7 +123,6 @@ class FirestoreService implements IFirestoreService {
     }
   }
 
-  @override
   Future<bool?> update({
     required String id,
     required Map<String, dynamic> json,

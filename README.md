@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 17.11.2021 ]
+[ Update: 13.12.2021 ]
 
 ### Kullanılan kütüphaneler:
 - http
@@ -8,7 +8,10 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 - sqflite
 - firebase_core
 - firebase_database
-- cloud_firestore
+- cloud_firestore  
+- firebase_auth
+- firebase_analytics
+- firebase_messaging
 #
 "core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
 
@@ -19,11 +22,12 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 + #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/lib/core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
-### Firebase Database ( [firebase_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_database) ):
-Verilerinizi firebase veritabanında(Realtime Database) yönetmek istiyorsanız bu paketi kullanabilirsiniz.
-#
-### Firestore Database ( [firebase_firestore](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_firestore) ):
-Verilerinizi firebase veritabanında(Firestore Database) yönetmek istiyorsanız bu paketi kullanabilirsiniz.
+### Firebase Servisleri ( [firebase_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services) ):
++ #### [Realtime Database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_database_service.dart)
++ #### [Firestore](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firestore_service.dart)
++ #### [Firebase Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_auth_service.dart)
++ #### [Firebase Push](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_push_service.dart)
++ #### [Firebase Analytics](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_analytics_service.dart)
 #
 ### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.

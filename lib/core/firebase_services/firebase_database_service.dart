@@ -1,14 +1,11 @@
 import 'package:firebase_database/firebase_database.dart';
-import '../abstract/i_firebase_database_service.dart';
 
-class FirebaseDatabaseService implements IFirebaseDatabaseService {
+class FirebaseDatabaseService {
   DatabaseReference _rootRef;
   FirebaseDatabaseService(this._rootRef);
 
-  @override
   DatabaseReference get ref => _rootRef;
 
-  @override
   Future<bool?> add({
     required Map<String, dynamic> json,
     String childPath = "/",
@@ -21,8 +18,7 @@ class FirebaseDatabaseService implements IFirebaseDatabaseService {
     }
   }
 
-  @override
-  Future<DataSnapshot?> get({String childPath = "/"}) async {
+  Future<DatabaseEvent?> get({String childPath = "/"}) async {
     try {
       return await _rootRef.child(childPath).once();
     } catch (e) {
@@ -30,7 +26,6 @@ class FirebaseDatabaseService implements IFirebaseDatabaseService {
     }
   }
 
-  @override
   Future<bool?> delete({String childPath = "/"}) async {
     try {
       await _rootRef.child(childPath).remove();
@@ -40,11 +35,10 @@ class FirebaseDatabaseService implements IFirebaseDatabaseService {
     }
   }
 
-  @override
   Future<bool?> hasChild({String childPath = "/"}) async {
     try {
       var result = await get(childPath: childPath);
-      return result?.value == null ? false : true;
+      return result?.snapshot.value == null ? false : true;
     } catch (e) {
       return null;
     }

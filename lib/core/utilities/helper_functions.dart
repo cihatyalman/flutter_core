@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final HelperFunctions helperFunctions = HelperFunctions();
+final helperFunctions = HelperFunctions();
 
 class HelperFunctions {
   Future delay([int millisecond = 1000]) async {
