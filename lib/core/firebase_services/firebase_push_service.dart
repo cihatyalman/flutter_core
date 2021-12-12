@@ -1,7 +1,3 @@
-
-// firebase_analytics: 
-// firebase_messaging: 
-
 // Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
 
 // void main() async {
