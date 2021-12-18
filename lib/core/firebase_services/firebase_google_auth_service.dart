@@ -9,7 +9,7 @@ class GoogleAuthService {
       googleAccount = await googleSignIn.signIn();
       return true;
     } catch (e) {
-      print("[C_ERROR]: ${e}");
+      print("[C_ERROR]: $e");
       return false;
     }
   }
@@ -19,7 +19,7 @@ class GoogleAuthService {
       googleAccount = await googleSignIn.signOut();
       return true;
     } catch (e) {
-      print("[C_ERROR]: ${e}");
+      print("[C_ERROR]: $e");
       return false;
     }
   }
