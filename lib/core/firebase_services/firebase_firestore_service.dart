@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirestoreService{
+class FirebaseFirestoreService{
   final FirebaseFirestore firestore;
   final String collectionName;
-  FirestoreService({required this.firestore, required this.collectionName});
+  FirebaseFirestoreService({required this.firestore, required this.collectionName});
 
   Future<String?> add({required Map<String, dynamic> json}) async {
     try {
