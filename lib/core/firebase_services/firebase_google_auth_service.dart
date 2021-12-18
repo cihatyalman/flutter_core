@@ -1,3 +1,5 @@
+// https://firebase.flutter.dev/docs/auth/social/
+
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {

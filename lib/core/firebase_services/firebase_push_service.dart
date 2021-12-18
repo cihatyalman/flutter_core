@@ -1,6 +1,10 @@
 // firebase_analytics:
 // firebase_messaging:
 
+// https://pub.dev/packages/firebase_messaging
+// https://firebase.flutter.dev/docs/messaging/overview/
+// https://firebase.flutter.dev/docs/messaging/usage/
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
