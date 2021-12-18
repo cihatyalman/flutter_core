@@ -20,7 +20,6 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
 ### Araçlar ( utilities ):
 + #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
-+ #### [helper_functions](https://github.com/cihatyalman/flutter_core/blob/master/lib/core/utilities/helper_functions.dart): Kod yazarken size yardımcı olacak mini fonksiyonlar.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 + #### [global_notifier](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/global_notifier.dart): Bir veri güncellenince UI'da da anlık olarak güncellenmesini sağlar.
 #
