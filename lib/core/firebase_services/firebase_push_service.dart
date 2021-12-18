@@ -1,37 +1,49 @@
-// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
-
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   await firebaseManager.pushService.init();
-//   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-//   runApp(MyApp());
-// }
-
+// firebase_analytics:
+// firebase_messaging:
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class FirebasePushService {
   final instance = FirebaseMessaging.instance;
 
-  Future init() async {
+  Future<String?> init() async {
     await instance.requestPermission();
     final token = await instance.getToken();
     instance.subscribeToTopic("all");
     print("[C_Instance_Token]: $token");
+    onMessage();
+    onMessageOpenedApp();
+    onMessageBackground();
+    return token;
   }
-  
-  onMessage(BuildContext context){
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      ScaffoldMessenger.of(context).showSnackBar(_snackBar(message));
-    });
+
+  onMessage() {
+    FirebaseMessaging.onMessage.listen(
+      (RemoteMessage message) {
+        ScaffoldMessenger.of(navigatorKey.currentState!.context)
+            .showSnackBar(_snackBar(message));
+      },
+    );
   }
-  onMessageOpenedApp(BuildContext context){
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      ScaffoldMessenger.of(context).showSnackBar(_snackBar(message));
-    });
+
+  onMessageOpenedApp() {
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (RemoteMessage message) {
+        ScaffoldMessenger.of(navigatorKey.currentState!.context)
+            .showSnackBar(_snackBar(message));
+      },
+    );
   }
+
+  onMessageBackground() {
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  }
+
+  static Future<void> firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {}
 
   SnackBar _snackBar(RemoteMessage data) {
     return SnackBar(
@@ -57,6 +69,4 @@ class FirebasePushService {
       ),
     );
   }
-
-
 }

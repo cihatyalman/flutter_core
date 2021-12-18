@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 13.12.2021 ]
+[ Update: 18.12.2021 ]
 
 ### Kullanılan kütüphaneler:
 - http
@@ -12,6 +12,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 - firebase_auth
 - firebase_analytics
 - firebase_messaging
+- google_sign_in
 #
 "core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
 
@@ -28,6 +29,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 + #### [Firebase Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_auth_service.dart)
 + #### [Firebase Push](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_push_service.dart)
 + #### [Firebase Analytics](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_analytics_service.dart)
++ #### [Firebase Google Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_google_auth_service.dart)
 #
 ### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
