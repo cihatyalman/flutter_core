@@ -1,11 +1,14 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 18.12.2021 ]
+[ Update: 27.12.2021 ]
 
 ### Kullanılan kütüphaneler:
 - http
 - dio
 - sqflite
+- qr_flutter
+- qr_code_scanner
+- image_picker
 - firebase_core
 - firebase_database
 - cloud_firestore  
@@ -31,9 +34,15 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 + #### [Firebase Analytics](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_analytics_service.dart)
 + #### [Firebase Google Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_google_auth_service.dart)
 #
-### Local Database ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
+### Local Veritabanı ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 #
 ### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/api_service) ):
 WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
+#
+### QR Servisi ( [qr_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/qr_service/qr_service.dart) ):
+QR oluşturmak veya qr okumak için kullanabilirsiniz.
+#
+### Medya Servisi ( [media_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_service) ):
++ #### [camera_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_service/camera_service.dart): Kamera veya galeriyi kullanmak için kullanabilirsiniz.
 #

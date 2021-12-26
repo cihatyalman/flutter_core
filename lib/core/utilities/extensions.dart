@@ -23,7 +23,7 @@ extension StringExtension on String {
       : DateTime.fromMillisecondsSinceEpoch(int.parse(this) * 1000);
 }
 
-extension Uint8ListExtension on Uint8List {
+extension ByteExtension on Uint8List {
   Image get toImageFromBytes => Image.memory(this);
   String get toStringFromBytes => utf8.decode(this);
   String get toBase64FromBytes => base64Encode(this);

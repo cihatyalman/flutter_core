@@ -1,14 +1,28 @@
-// https://firebase.flutter.dev/docs/auth/social/
+// ignore_for_file: avoid_print
 
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
-  final googleSignIn = GoogleSignIn();
-  GoogleSignInAccount? googleAccount;
+  final googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ],
+  );
+  GoogleSignInAccount? currentUser;
+
+  GoogleAuthService() {
+    googleSignIn.onCurrentUserChanged.listen(
+      (account) {
+        currentUser = account;
+      },
+    );
+    googleSignIn.signInSilently();
+  }
 
   Future<bool> signIn() async {
     try {
-      googleAccount = await googleSignIn.signIn();
+      await googleSignIn.signIn();
       return true;
     } catch (e) {
       print("[C_ERROR]: $e");
@@ -18,7 +32,7 @@ class GoogleAuthService {
 
   Future<bool> signOut() async {
     try {
-      googleAccount = await googleSignIn.signOut();
+      await googleSignIn.disconnect();
       return true;
     } catch (e) {
       print("[C_ERROR]: $e");
