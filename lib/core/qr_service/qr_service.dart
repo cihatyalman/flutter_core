@@ -7,7 +7,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRService {
-  static QrImage createQR(
+  QrImage createQR(
     String data, {
     QrErrorBuilder? errorStateBuilder,
     double size = 200,
@@ -32,7 +32,7 @@ class QRService {
     );
   }
 
-  static Future<String?> readQR(BuildContext context) async {
+  Future<String?> readQR(BuildContext context) async {
     Barcode? barcode;
     await showDialog(
       context: context,
