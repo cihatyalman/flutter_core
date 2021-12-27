@@ -26,6 +26,7 @@ class HttpService implements IApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
+      print("[C_ERROR]: $e");
       return null;
     }
   }
@@ -33,7 +34,7 @@ class HttpService implements IApiService {
   @override
   Future post({
     required String path,
-    required Map json,
+    required Map<String,dynamic> json,
     Map<String, String>? headers,
   }) async {
     try {
@@ -44,7 +45,15 @@ class HttpService implements IApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
+      print("[C_ERROR]: $e");
       return null;
     }
   }
+
+  @override
+  Future? postFormData({
+    required String path,
+    required Map<String, dynamic> json,
+    Map<String, String>? headers,
+  }) async {}
 }

@@ -24,7 +24,6 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 ### Araçlar ( utilities ):
 + #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
-+ #### [global_notifier](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/global_notifier.dart): Bir veri güncellenince UI'da da anlık olarak güncellenmesini sağlar.
 #
 ### Firebase Servisleri ( [firebase_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services) ):
 + #### [Realtime Database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_database_service.dart)
@@ -43,6 +42,6 @@ WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 ### QR Servisi ( [qr_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/qr_service/qr_service.dart) ):
 QR oluşturmak veya qr okumak için kullanabilirsiniz.
 #
-### Medya Servisi ( [media_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_service) ):
-+ #### [camera_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_service/camera_service.dart): Kamera veya galeriyi kullanmak için kullanabilirsiniz.
+### Medya Servisleri ( [media_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services) ):
++ #### [camera_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/camera_service.dart): Kamera veya galeriyi kullanmak için kullanabilirsiniz.
 #

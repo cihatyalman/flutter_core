@@ -14,7 +14,6 @@ class DioService implements IApiService {
   }) {
     dio
       ..options.baseUrl = baseUrl
-      ..options.contentType = 'application/json; charset=UTF-8'
       ..interceptors.add(_CustomInterceptors());
   }
 
@@ -30,6 +29,7 @@ class DioService implements IApiService {
       );
       return jsonDecode(response.toString());
     } catch (e) {
+      print("[C_ERROR]: $e");
       return null;
     }
   }
@@ -37,7 +37,7 @@ class DioService implements IApiService {
   @override
   Future post({
     required String path,
-    required Map json,
+    required Map<String, dynamic> json,
     Map<String, String>? headers,
   }) async {
     try {
@@ -48,6 +48,26 @@ class DioService implements IApiService {
       );
       return jsonDecode(response.toString());
     } catch (e) {
+      print("[C_ERROR]: $e");
+      return null;
+    }
+  }
+
+  @override
+  Future? postFormData({
+    required String path,
+    required Map<String, dynamic> json,
+    Map<String, String>? headers,
+  }) async {
+    try {
+      var response = await dio.post(
+        path,
+        options: Options(headers: headers ?? this.headers),
+        data: FormData.fromMap(json),
+      );
+      return response.toString();
+    } catch (e) {
+      print("[C_ERROR]: $e");
       return null;
     }
   }
