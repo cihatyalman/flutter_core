@@ -1,22 +1,30 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 28.12.2021 ]
+[ Update: 29.12.2021 ]
 
 ### Kullanılan kütüphaneler:
-- http
-- dio
-- sqflite
-- qr_flutter
-- qr_code_scanner
-- image_picker
-- file_picker
-- firebase_core
-- firebase_database
-- cloud_firestore  
-- firebase_auth
-- firebase_analytics
-- firebase_messaging
-- google_sign_in
++ API Service
+    - http
+    - dio
++ Local Database
+    - sqflite
++ QR Service
+    - qr_flutter
+    - qr_code_scanner
++ Media Service
+    - image_picker
+    - file_picker
+    - flutter_image_compress
+    - video_player
+    - chewie
++ Firebase Service
+    - firebase_core
+    - firebase_database
+    - cloud_firestore  
+    - firebase_auth
+    - firebase_analytics
+    - firebase_messaging
+    - google_sign_in
 #
 "core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
 
@@ -45,5 +53,6 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 #
 ### Medya Servisleri ( [media_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services) ):
 + #### [camera_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/camera_service.dart): Kamera veya galeriyi kullanmak için kullanabilirsiniz.
++ #### [video_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/video_service.dart): Videolarınızı oynatmak için kullanabilirsiniz.
 + #### [file_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/file_service.dart): Telefondan resim, pdf, dosya vs. almak için kullanabilirsiniz.
 #
