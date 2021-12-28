@@ -44,7 +44,6 @@ class CameraService {
 
 // #region Compress
 
-  // 1. compress file and get Uint8List
   Future<Uint8List?> compressByteFromFile(File file,
       {int quality = 100}) async {
     var result = await FlutterImageCompress.compressWithFile(
@@ -54,7 +53,6 @@ class CameraService {
     return result;
   }
 
-  // 2. compress file and get file.
   Future<File?> compressFileFromFile(File file, String targetPath,
       {int quality = 100}) async {
     var result = await FlutterImageCompress.compressAndGetFile(
@@ -66,7 +64,6 @@ class CameraService {
     return result;
   }
 
-  // 3. compress asset and get Uint8List.
   Future<Uint8List?> compressByteFromAsset(String assetName,
       {int quality = 100}) async {
     var result = await FlutterImageCompress.compressAssetImage(
@@ -77,7 +74,6 @@ class CameraService {
     return result;
   }
 
-  // 4. compress Uint8List and get another Uint8List.
   Future<Uint8List> compressByteFromByte(Uint8List list,
       {int quality = 100}) async {
     var result = await FlutterImageCompress.compressWithList(
