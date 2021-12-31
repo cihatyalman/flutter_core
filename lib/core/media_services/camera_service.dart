@@ -9,7 +9,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraService {
-  int? quality;
+  final int quality;
   CameraService({this.quality = 100});
 
   final _picker = ImagePicker();
@@ -20,13 +20,11 @@ class CameraService {
       preferredCameraDevice: CameraDevice.rear,
       imageQuality: quality,
     );
-
     return pickedFile != null ? File(pickedFile.path) : null;
   }
 
   Future<List<File>?> getMultiImage() async {
     final pickedFile = await _picker.pickMultiImage(imageQuality: quality);
-
     return pickedFile != null
         ? pickedFile.map((e) => File(e.path)).toList()
         : null;
@@ -38,50 +36,61 @@ class CameraService {
       preferredCameraDevice: CameraDevice.rear,
       maxDuration: maxDuration,
     );
-
     return pickedFile != null ? File(pickedFile.path) : null;
   }
 
 // #region Compress
-
-  Future<Uint8List?> compressByteFromFile(File file,
-      {int quality = 100}) async {
-    var result = await FlutterImageCompress.compressWithFile(
-      file.absolute.path,
-      quality: quality,
-    );
-    return result;
+  Future<File> autoCompressFile(File file, {int maxByte = 1048576}) async {
+    File tempFile = file;
+    int quality = this.quality;
+    while (quality > 1) {
+      int length = (await tempFile.length());
+      if (length < maxByte) break;
+      quality -= 1;
+      tempFile = (await compressFileFromFile(file, quality: quality))!;
+    }
+    return tempFile;
   }
 
-  Future<File?> compressFileFromFile(File file, String targetPath,
-      {int quality = 100}) async {
-    var result = await FlutterImageCompress.compressAndGetFile(
+  String _getTargetPath(String path, int quality) {
+    final type = path.split('.').last;
+    final base = path.split('/');
+    base.removeAt(base.length - 1);
+    return "${base.join('/')}/${DateTime.now().millisecondsSinceEpoch}.$type";
+  }
+
+  Future<File?> compressFileFromFile(File file,
+      {String? targetPath, int quality = 100}) async {
+    targetPath ??= _getTargetPath(file.path, quality);
+    return await FlutterImageCompress.compressAndGetFile(
       file.absolute.path,
       targetPath,
       quality: quality,
     );
-
-    return result;
   }
 
-  Future<Uint8List?> compressByteFromAsset(String assetName,
+  Future<Uint8List?> compressByteFromFile(File file,
       {int quality = 100}) async {
-    var result = await FlutterImageCompress.compressAssetImage(
-      assetName,
+    return await FlutterImageCompress.compressWithFile(
+      file.absolute.path,
       quality: quality,
     );
-
-    return result;
   }
 
   Future<Uint8List> compressByteFromByte(Uint8List list,
       {int quality = 100}) async {
-    var result = await FlutterImageCompress.compressWithList(
+    return await FlutterImageCompress.compressWithList(
       list,
       quality: quality,
     );
+  }
 
-    return result;
+  Future<Uint8List?> compressByteFromAsset(String assetName,
+      {int quality = 100}) async {
+    return await FlutterImageCompress.compressAssetImage(
+      assetName,
+      quality: quality,
+    );
   }
 // #endregion
 }
