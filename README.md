@@ -1,6 +1,6 @@
 # flutter_core
 Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 31.12.2021 ]
+[ Update: 02.01.2022 ]
 
 ### Kullanılan kütüphaneler:
 + API Service
@@ -31,7 +31,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
 NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
 ### Araçlar ( utilities ):
-+ #### [extensions](https://github.com/cihatyalman/flutter_core/blob/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
++ #### [extensions](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
 ### Firebase Servisleri ( [firebase_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services) ):

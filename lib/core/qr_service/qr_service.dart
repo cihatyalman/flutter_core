@@ -2,6 +2,15 @@
 // https://pub.dev/packages/qr_flutter
 // *https://pub.dev/packages/qr_code_scanner
 
+// android/app/build.gradle
+//    minSdkVersion 20
+// android/build.gradle
+//    ext.kotlin_version = '1.5.10'
+//    classpath 'com.android.tools.build:gradle:4.2.0'
+// android/gradle/wrapper/gradle-wrapper.properties
+//    distributionUrl=https\://services.gradle.org/distributions/gradle-6.9-all.zip
+
+
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
