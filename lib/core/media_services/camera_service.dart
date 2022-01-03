@@ -1,16 +1,25 @@
 // Documents and Integration
 // https://pub.dev/packages/image_picker
 // https://pub.dev/packages/flutter_image_compress
+// *https://pub.dev/packages/image_cropper
 
 import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraService {
   final int quality;
-  CameraService({this.quality = 100});
+  final double maxWidth;
+  final double maxHeight;
+
+  CameraService({
+    this.quality = 100,
+    this.maxWidth = 1080,
+    this.maxHeight = 1920,
+  });
 
   final _picker = ImagePicker();
 
@@ -19,12 +28,18 @@ class CameraService {
       source: source,
       preferredCameraDevice: CameraDevice.rear,
       imageQuality: quality,
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
     );
     return pickedFile != null ? File(pickedFile.path) : null;
   }
 
   Future<List<File>?> getMultiImage() async {
-    final pickedFile = await _picker.pickMultiImage(imageQuality: quality);
+    final pickedFile = await _picker.pickMultiImage(
+      imageQuality: quality,
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
+    );
     return pickedFile != null
         ? pickedFile.map((e) => File(e.path)).toList()
         : null;
@@ -38,6 +53,21 @@ class CameraService {
     );
     return pickedFile != null ? File(pickedFile.path) : null;
   }
+
+// #region Crop
+  Future<File?> getCropImage(File file) async {
+    return await ImageCropper.cropImage(
+        sourcePath: file.path,
+        aspectRatio: const CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
+        androidUiSettings: const AndroidUiSettings(
+          toolbarTitle: 'Fotoğraf Düzenleyici',
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: true,
+          hideBottomControls: true,
+        ),
+        iosUiSettings: const IOSUiSettings(title: 'Fotoğraf Düzenleyici'));
+  }
+// #endregion
 
 // #region Compress
   Future<File> autoCompressFile(File file, {int maxByte = 1048576}) async {

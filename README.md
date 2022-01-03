@@ -1,6 +1,13 @@
-# flutter_core
-Projelerinizde kullanabileceğiniz çekirdek katman.
-[ Update: 02.01.2022 ]
+# Flutter Core
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 04.01.2022 ]
+
+#
+
+"core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
+
+NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
+
+#
 
 ### Kullanılan kütüphaneler:
 + API Service
@@ -15,6 +22,7 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
     - image_picker
     - file_picker
     - flutter_image_compress
+    - image_cropper
     - video_player
     - chewie
 + Firebase Service
@@ -25,12 +33,10 @@ Projelerinizde kullanabileceğiniz çekirdek katman.
     - firebase_analytics
     - firebase_messaging
     - google_sign_in
-#
-"core" klasörünü projenizin lib dizinine kopyalayarak kullanabilirsiniz. Projenizde kullanılmayacak klasörleri silebilirsiniz.
 
-NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 #
-### Araçlar ( utilities ):
+
+### Araçlar ( [utilities](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities) ):
 + #### [extensions](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
 + #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
 #
@@ -45,7 +51,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 ### Local Veritabanı ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
 Verilerinizi local bir veritabanında yönetmek istiyorsanız bu paketi kullanabilirsiniz.
 #
-### API Servisleri ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/api_service) ):
+### API Servisi ( [api_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/api_service) ):
 WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 #
 ### QR Servisi ( [qr_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/qr_service/qr_service.dart) ):
