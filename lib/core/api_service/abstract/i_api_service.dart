@@ -1,4 +1,4 @@
-class IApiService<T> {
+abstract class IApiService<T> {
   Future<T?>? get({
     required String path,
     Map<String, String>? headers,
