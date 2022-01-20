@@ -4,15 +4,13 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 
 extension NavigatorKeyExtension on GlobalKey<NavigatorState> {
-  NavigatorState get state => currentState!;
-  MediaQueryData get mediaQuery => MediaQuery.of(currentState!.context);
-  ThemeData get theme => Theme.of(currentState!.context);
-  TextTheme get textTheme => Theme.of(currentState!.context).textTheme;
+  MediaQueryData get mediaQuery => MediaQuery.of(currentContext!);
+  ThemeData get theme => Theme.of(currentContext!);
 
   double dynamicWidth(double value) =>
-      MediaQuery.of(currentState!.context).size.width * value;
+      MediaQuery.of(currentContext!).size.width * value;
   double dynamicHeight(double value) =>
-      MediaQuery.of(currentState!.context).size.height * value;
+      MediaQuery.of(currentContext!).size.height * value;
 }
 
 extension StringExtension on String {
