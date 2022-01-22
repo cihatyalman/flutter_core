@@ -1,8 +1,10 @@
+// ignore_for_file: unnecessary_this
+
 import '../abstract/i_data_result.dart';
 import 'result.dart';
 
 class DataResult<T> extends Result implements IDataResult<T>{
-  T _data;
+  final T _data;
 
   @override
   T get data => this._data;

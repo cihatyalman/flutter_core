@@ -1,6 +1,5 @@
-// ignore_for_file: avoid_print
-
 import 'package:google_sign_in/google_sign_in.dart';
+import '../utilities/console.dart';
 
 class GoogleAuthService {
   final googleSignIn = GoogleSignIn(
@@ -25,7 +24,7 @@ class GoogleAuthService {
       await googleSignIn.signIn();
       return true;
     } catch (e) {
-      print("[C_ERROR]: $e");
+      Console.printError(e.toString());
       return false;
     }
   }
@@ -35,7 +34,7 @@ class GoogleAuthService {
       await googleSignIn.disconnect();
       return true;
     } catch (e) {
-      print("[C_ERROR]: $e");
+      Console.printError(e.toString());
       return false;
     }
   }

@@ -8,16 +8,17 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
+import '../utilities/console.dart';
+import '../utilities/mixins/context_mixin.dart';
 
-class FirebasePushService {
+class FirebasePushService with ContextMixin{
   final instance = FirebaseMessaging.instance;
 
   Future<String?> init() async {
     await instance.requestPermission();
     final token = await instance.getToken();
     instance.subscribeToTopic("all");
-    print("[C_Instance_Token]: $token");
+    Console.printSuccess("[C_Instance_Token]: $token");
     onMessage();
     onMessageOpenedApp();
     onMessageBackground();
@@ -27,7 +28,7 @@ class FirebasePushService {
   onMessage() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
-        ScaffoldMessenger.of(navigatorKey.currentState!.context)
+        ScaffoldMessenger.of(currentContext)
             .showSnackBar(_snackBar(message));
       },
     );
@@ -36,7 +37,7 @@ class FirebasePushService {
   onMessageOpenedApp() {
     FirebaseMessaging.onMessageOpenedApp.listen(
       (RemoteMessage message) {
-        ScaffoldMessenger.of(navigatorKey.currentState!.context)
+        ScaffoldMessenger.of(currentContext)
             .showSnackBar(_snackBar(message));
       },
     );
