@@ -8,7 +8,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import '../utilities/console.dart';
 import '../utilities/mixins/context_mixin.dart';
 
 class FirebasePushService with ContextMixin{
@@ -18,7 +17,7 @@ class FirebasePushService with ContextMixin{
     await instance.requestPermission();
     final token = await instance.getToken();
     instance.subscribeToTopic("all");
-    Console.printSuccess("[C_Instance_Token]: $token");
+    print("[C_Instance_Token]: $token");
     onMessage();
     onMessageOpenedApp();
     onMessageBackground();

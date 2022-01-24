@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../utilities/console.dart';
 
 class FirebaseAuthService {
   final instance = FirebaseAuth.instance;
@@ -16,11 +15,11 @@ class FirebaseAuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        Console.printError(
+        print(
             "[C_firebase_register]: Bu e-posta için hesap zaten var.");
       }
     } catch (e) {
-      Console.printError(e.toString());
+      print("[C_ERROR]: $e");
     }
   }
 
@@ -36,9 +35,9 @@ class FirebaseAuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        Console.printError("[C_firebase_signin]: Bu e-posta için kullanıcı bulunamadı.");
+        print("[C_firebase_signin]: Bu e-posta için kullanıcı bulunamadı.");
       } else if (e.code == 'wrong-password') {
-        Console.printError("[C_firebase_signin]: Bu kullanıcı için yanlış şifre sağlandı.");
+        print("[C_firebase_signin]: Bu kullanıcı için yanlış şifre sağlandı.");
       }
     }
   }
@@ -48,7 +47,7 @@ class FirebaseAuthService {
       await instance.signOut();
       return true;
     } catch (e) {
-      Console.printError(e.toString());
+      print("[C_ERROR]: $e");
       return false;
     }
   }

@@ -7,7 +7,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
-import '../utilities/console.dart';
 
 class VideoService {
   final double? aspectRatio;
@@ -36,7 +35,7 @@ class VideoService {
         ),
       );
     } catch (e) {
-      Console.printError(e.toString());
+      print("[C_ERROR]: $e");
       return Center(child: Text("ERROR"));
     }
   }

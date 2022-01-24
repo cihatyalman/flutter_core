@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import '../abstract/i_api_service.dart';
-import '../../utilities/console.dart';
 
 class HttpService implements IApiService {
   final String _baseUrl;
@@ -27,7 +26,7 @@ class HttpService implements IApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      Console.printError(e.toString());
+      print("[C_ERROR]: $e");
       return null;
     }
   }
@@ -46,7 +45,7 @@ class HttpService implements IApiService {
       );
       return jsonDecode(response.body);
     } catch (e) {
-      Console.printError(e.toString());
+      print("[C_ERROR]: $e");
       return null;
     }
   }
