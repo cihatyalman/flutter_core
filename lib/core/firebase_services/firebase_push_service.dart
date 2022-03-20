@@ -8,7 +8,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import '../utilities/mixins/context_mixin.dart';
+import '../utils/mixins/context_mixin.dart';
 
 class FirebasePushService with ContextMixin{
   final instance = FirebaseMessaging.instance;

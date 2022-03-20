@@ -14,11 +14,15 @@ class CameraService {
   final int quality;
   final double maxWidth;
   final double maxHeight;
+  final double ratioX;
+  final double ratioY;
 
   CameraService({
     this.quality = 100,
     this.maxWidth = 1080,
     this.maxHeight = 1920,
+    this.ratioX = 1,
+    this.ratioY = 1,
   });
 
   final _picker = ImagePicker();
@@ -57,15 +61,35 @@ class CameraService {
 // #region Crop
   Future<File?> getCropImage(File file) async {
     return await ImageCropper.cropImage(
-        sourcePath: file.path,
-        aspectRatio: const CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
-        androidUiSettings: const AndroidUiSettings(
-          toolbarTitle: 'Fotoğraf Düzenleyici',
-          initAspectRatio: CropAspectRatioPreset.original,
-          lockAspectRatio: true,
-          hideBottomControls: true,
-        ),
-        iosUiSettings: const IOSUiSettings(title: 'Fotoğraf Düzenleyici'));
+      sourcePath: file.path,
+      androidUiSettings: const AndroidUiSettings(
+        toolbarTitle: 'Fotoğraf Düzenleyici',
+        initAspectRatio: CropAspectRatioPreset.original,
+        lockAspectRatio: true,
+        hideBottomControls: true,
+        showCropGrid: false,
+      ),
+      iosUiSettings: const IOSUiSettings(title: 'Fotoğraf Düzenleyici'),
+      aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
+      // aspectRatioPresets: Platform.isAndroid
+      //     ? [
+      //         CropAspectRatioPreset.original,
+      //         CropAspectRatioPreset.square,
+      //         CropAspectRatioPreset.ratio3x2,
+      //         CropAspectRatioPreset.ratio4x3,
+      //         CropAspectRatioPreset.ratio16x9,
+      //       ]
+      //     : [
+      //         CropAspectRatioPreset.original,
+      //         CropAspectRatioPreset.square,
+      //         CropAspectRatioPreset.ratio3x2,
+      //         CropAspectRatioPreset.ratio4x3,
+      //         CropAspectRatioPreset.ratio5x3,
+      //         CropAspectRatioPreset.ratio5x4,
+      //         CropAspectRatioPreset.ratio7x5,
+      //         CropAspectRatioPreset.ratio16x9
+      //       ],
+    );
   }
 // #endregion
 
@@ -123,4 +147,20 @@ class CameraService {
     );
   }
 // #endregion
+
+  CameraService copyWith({
+    int? quality,
+    double? maxWidth,
+    double? maxHeight,
+    double? ratioX,
+    double? ratioY,
+  }) {
+    return CameraService(
+      quality: quality ?? this.quality,
+      maxWidth: maxWidth ?? this.maxWidth,
+      maxHeight: maxHeight ?? this.maxHeight,
+      ratioX: ratioX ?? this.ratioX,
+      ratioY: ratioY ?? this.ratioY,
+    );
+  }
 }

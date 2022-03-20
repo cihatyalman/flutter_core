@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 24.01.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 20.03.2022 ]
 
 #
 
@@ -42,11 +42,10 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 
 #
 
-### Araçlar ( [utilities](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities) ):
+### Araçlar ( [utils](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utils) ):
 
-- #### [extensions](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
-- #### [mixins](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/mixins): Sınıflara ek özellikler eklememizi sağlar.
-- #### [results](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utilities/results): Bir fonsiyonun belli bir kalıpta sonuç dönmesini sağlar.
+- #### [extensions](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utils/extensions.dart): Bazı tür dönüşümleri yapmanıza yardımcı olur.
+- #### [mixins](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/utils/mixins): Sınıflara ek özellikler eklememizi sağlar.
 
 #
 
