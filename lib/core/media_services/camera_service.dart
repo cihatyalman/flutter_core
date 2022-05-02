@@ -1,7 +1,7 @@
 // Documents and Integration
 // https://pub.dev/packages/image_picker
 // https://pub.dev/packages/flutter_image_compress
-// *https://pub.dev/packages/image_cropper
+// *https://pub.dev/packages/image_cropper  add integrate to manifest.xml 
 
 import 'dart:io';
 import 'dart:typed_data';
@@ -60,17 +60,19 @@ class CameraService {
 
 // #region Crop
   Future<File?> getCropImage(File file) async {
-    return await ImageCropper.cropImage(
+    final r = await ImageCropper().cropImage(
       sourcePath: file.path,
-      androidUiSettings: const AndroidUiSettings(
-        toolbarTitle: 'Fotoğraf Düzenleyici',
-        initAspectRatio: CropAspectRatioPreset.original,
-        lockAspectRatio: true,
-        hideBottomControls: true,
-        showCropGrid: false,
-      ),
-      iosUiSettings: const IOSUiSettings(title: 'Fotoğraf Düzenleyici'),
       aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Photo Editor',
+          initAspectRatio: CropAspectRatioPreset.original,
+          lockAspectRatio: true,
+          hideBottomControls: true,
+          showCropGrid: false,
+        ),
+        IOSUiSettings(title: 'Photo Editor'),
+      ],
       // aspectRatioPresets: Platform.isAndroid
       //     ? [
       //         CropAspectRatioPreset.original,
@@ -90,6 +92,7 @@ class CameraService {
       //         CropAspectRatioPreset.ratio16x9
       //       ],
     );
+    return File(r!.path);
   }
 // #endregion
 

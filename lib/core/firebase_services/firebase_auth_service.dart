@@ -21,6 +21,7 @@ class FirebaseAuthService {
     } catch (e) {
       print("[C_ERROR]: $e");
     }
+    return null;
   }
 
   Future<User?> signIn({
@@ -40,6 +41,7 @@ class FirebaseAuthService {
         print("[C_firebase_signin]: Bu kullanıcı için yanlış şifre sağlandı.");
       }
     }
+    return null;
   }
 
   Future<bool> signOut() async {
