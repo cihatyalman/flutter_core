@@ -1,7 +1,7 @@
 // Documents and Integration
 // https://pub.dev/packages/image_picker
 // https://pub.dev/packages/flutter_image_compress
-// *https://pub.dev/packages/image_cropper  add integrate to manifest.xml 
+// *https://pub.dev/packages/image_cropper  add integrate to manifest.xml
 
 import 'dart:io';
 import 'dart:typed_data';
@@ -10,19 +10,25 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+final cameraService = CameraService();
+
 class CameraService {
+  final String title;
   final int quality;
   final double maxWidth;
   final double maxHeight;
   final double ratioX;
   final double ratioY;
+  final bool isAspectRatio;
 
   CameraService({
+    this.title = "Fotoğraf Düzenleyici",
     this.quality = 100,
     this.maxWidth = 1080,
     this.maxHeight = 1920,
     this.ratioX = 1,
     this.ratioY = 1,
+    this.isAspectRatio = true,
   });
 
   final _picker = ImagePicker();
@@ -44,9 +50,11 @@ class CameraService {
       maxWidth: maxWidth,
       maxHeight: maxHeight,
     );
-    return pickedFile != null
-        ? pickedFile.map((e) => File(e.path)).toList()
-        : null;
+    if (pickedFile != null) {
+      return pickedFile.map((e) => File(e.path)).toList();
+    } else {
+      return null;
+    }
   }
 
   Future<File?> getVideo(ImageSource source, {Duration? maxDuration}) async {
@@ -65,13 +73,13 @@ class CameraService {
       aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
       uiSettings: [
         AndroidUiSettings(
-          toolbarTitle: 'Photo Editor',
+          toolbarTitle: title,
           initAspectRatio: CropAspectRatioPreset.original,
-          lockAspectRatio: true,
-          hideBottomControls: true,
-          showCropGrid: false,
+          lockAspectRatio: isAspectRatio,
+          hideBottomControls: false,
+          showCropGrid: true,
         ),
-        IOSUiSettings(title: 'Photo Editor'),
+        IOSUiSettings(title: title),
       ],
       // aspectRatioPresets: Platform.isAndroid
       //     ? [
@@ -92,7 +100,7 @@ class CameraService {
       //         CropAspectRatioPreset.ratio16x9
       //       ],
     );
-    return File(r!.path);
+    return r == null ? null : File(r.path);
   }
 // #endregion
 
@@ -152,18 +160,22 @@ class CameraService {
 // #endregion
 
   CameraService copyWith({
+    String? title,
     int? quality,
     double? maxWidth,
     double? maxHeight,
     double? ratioX,
     double? ratioY,
+    bool? isAspectRatio,
   }) {
     return CameraService(
+      title: title ?? this.title,
       quality: quality ?? this.quality,
       maxWidth: maxWidth ?? this.maxWidth,
       maxHeight: maxHeight ?? this.maxHeight,
       ratioX: ratioX ?? this.ratioX,
       ratioY: ratioY ?? this.ratioY,
+      isAspectRatio: isAspectRatio ?? this.isAspectRatio,
     );
   }
 }
