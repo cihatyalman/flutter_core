@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 15.05.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 21.05.2022 ]
 
 #
 
@@ -39,6 +39,8 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - hive
   - hive_flutter
   - shared_preferences
+- Other
+  - awesome_notifications
 
 #
 
@@ -90,5 +92,11 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 - #### [hive](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/cache_service)
 - #### [shared_preferences](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/shared_preferences_service)
+
+#
+
+### Bildirim Servisi:
+
+- #### [notification_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service)
 
 #
