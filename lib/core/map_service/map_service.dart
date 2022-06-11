@@ -37,7 +37,7 @@ class MapService {
     );
   }
 
-  Future<BitmapDescriptor?> createMarker(Widget widget) async {
+  Future<BitmapDescriptor> createMarkerIcon(Widget widget) async {
     return BitmapDescriptor.fromBytes(await ScreenshotController()
         .captureFromWidget(widget, delay: Duration.zero));
   }
@@ -62,7 +62,7 @@ class MapService {
     controller?.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         target: latLng != null
-            ? LatLng(latLng.latitude - .005, latLng.longitude)
+            ? LatLng(latLng.latitude, latLng.longitude)
             : LatLng(0, 0),
         zoom: zoom ?? 14,
       ),
