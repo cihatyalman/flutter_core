@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 21.05.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 11.06.2022 ]
 
 #
 
@@ -22,11 +22,13 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - qr_code_scanner
 - Media Service
   - image_picker
-  - file_picker
-  - flutter_image_compress
   - image_cropper
+  - flutter_image_compress
+  - file_picker
   - video_player
   - chewie
+  - flutter_sound_record
+  - just_audio
 - Firebase Service
   - firebase_core
   - firebase_database
@@ -39,8 +41,12 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - hive
   - hive_flutter
   - shared_preferences
+- Map Service
+  - google_maps_flutter
 - Other
+  - path_provider
   - awesome_notifications
+  - screenshot
 
 #
 
@@ -83,8 +89,9 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 ### Medya Servisleri ( [media_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services) ):
 
 - #### [camera_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/camera_service.dart): Kamera veya galeriyi kullanmak için kullanabilirsiniz.
-- #### [video_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/video_service.dart): Videolarınızı oynatmak için kullanabilirsiniz.
 - #### [file_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/file_service.dart): Telefondan resim, pdf, dosya vs. almak için kullanabilirsiniz.
+- #### [video_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/video_service.dart): Videolarınızı oynatmak için kullanabilirsiniz.
+- #### [audio_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/media_services/audio_service.dart): Ses kaydetmek veya oynatmak için kullanabilirsiniz.
 
 #
 
@@ -92,6 +99,12 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 - #### [hive](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/cache_service)
 - #### [shared_preferences](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/shared_preferences_service)
+
+#
+
+### Harita Servisi:
+
+- #### [map_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_service)
 
 #
 

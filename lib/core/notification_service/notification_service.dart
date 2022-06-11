@@ -20,6 +20,7 @@ class NotificationService {
           channelDescription: 'Notification Channel',
           defaultColor: Colors.teal, // primaryColor
           ledColor: Colors.white,
+          playSound: true,
           channelShowBadge: true,
           importance: NotificationImportance.High,
         ),

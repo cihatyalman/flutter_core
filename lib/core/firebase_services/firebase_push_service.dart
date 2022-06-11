@@ -24,30 +24,37 @@ class FirebasePushService with ContextMixin{
     return token;
   }
 
+  // Uygulama açıkken tetiklenir
   onMessage() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
+        // Edit
         ScaffoldMessenger.of(currentContext)
             .showSnackBar(_snackBar(message));
       },
     );
   }
 
+  // Uygulama bildirime tıklanarak açıldığında tetiklenir
   onMessageOpenedApp() {
     FirebaseMessaging.onMessageOpenedApp.listen(
       (RemoteMessage message) {
+        // Edit
         ScaffoldMessenger.of(currentContext)
             .showSnackBar(_snackBar(message));
       },
     );
   }
 
+  // Uygulama kapalıyken tetiklenir
   onMessageBackground() {
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   }
 
   static Future<void> firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {}
+      RemoteMessage message) async {
+        // Edit
+      }
 
   SnackBar _snackBar(RemoteMessage data) {
     return SnackBar(

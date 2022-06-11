@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import '../abstract/i_api_service.dart';
@@ -65,7 +67,7 @@ class DioService implements IApiService {
         options: Options(headers: headers ?? this.headers),
         data: FormData.fromMap(json),
       );
-      return response.toString();
+      return jsonDecode(response.toString());
     } catch (e) {
       print("[C_ERROR]: $e");
       return null;
@@ -75,7 +77,8 @@ class DioService implements IApiService {
 
 class _CustomInterceptors extends Interceptor {
   @override
-  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async{
+  Future onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     // print('REQUEST[${options.method}] => PATH: ${options.path}');
     return super.onRequest(options, handler);
   }

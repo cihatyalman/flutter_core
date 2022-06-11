@@ -2,7 +2,6 @@
 // https://pub.dev/packages/file_picker
 
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 
 class FileService {
@@ -22,6 +21,10 @@ class FileService {
       type: allowedExtensions != null ? FileType.custom : FileType.any,
       allowedExtensions: allowedExtensions,
     );
-    return result != null ? result.paths.map((e) => File(e!)).toList() : null;
+    if (result != null) {
+      return result.paths.map((e) => File(e!)).toList();
+    } else {
+      return null;
+    }
   }
 }

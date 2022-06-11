@@ -3,6 +3,8 @@
 // https://pub.dev/packages/flutter_image_compress
 // *https://pub.dev/packages/image_cropper  add integrate to manifest.xml
 
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -10,15 +12,13 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
-final cameraService = CameraService();
-
 class CameraService {
   final String title;
   final int quality;
   final double maxWidth;
   final double maxHeight;
-  final double ratioX;
-  final double ratioY;
+  final double? ratioX;
+  final double? ratioY;
   final bool isAspectRatio;
 
   CameraService({
@@ -26,8 +26,8 @@ class CameraService {
     this.quality = 100,
     this.maxWidth = 1080,
     this.maxHeight = 1920,
-    this.ratioX = 1,
-    this.ratioY = 1,
+    this.ratioX,
+    this.ratioY,
     this.isAspectRatio = true,
   });
 
@@ -70,7 +70,9 @@ class CameraService {
   Future<File?> getCropImage(File file) async {
     final r = await ImageCropper().cropImage(
       sourcePath: file.path,
-      aspectRatio: CropAspectRatio(ratioX: ratioX, ratioY: ratioY),
+      aspectRatio: ratioX == null
+          ? null
+          : CropAspectRatio(ratioX: ratioX!, ratioY: ratioY ?? ratioX!),
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: title,
@@ -79,7 +81,11 @@ class CameraService {
           hideBottomControls: false,
           showCropGrid: true,
         ),
-        IOSUiSettings(title: title),
+        IOSUiSettings(
+          title: title,
+          aspectRatioLockEnabled: isAspectRatio,
+          aspectRatioPickerButtonHidden: true,
+        ),
       ],
       // aspectRatioPresets: Platform.isAndroid
       //     ? [
@@ -173,8 +179,8 @@ class CameraService {
       quality: quality ?? this.quality,
       maxWidth: maxWidth ?? this.maxWidth,
       maxHeight: maxHeight ?? this.maxHeight,
-      ratioX: ratioX ?? this.ratioX,
-      ratioY: ratioY ?? this.ratioY,
+      ratioX: ratioX,
+      ratioY: ratioY,
       isAspectRatio: isAspectRatio ?? this.isAspectRatio,
     );
   }
