@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {
@@ -15,8 +17,7 @@ class FirebaseAuthService {
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        print(
-            "[C_firebase_register]: Bu e-posta için hesap zaten var.");
+        print("[C_firebase_register]: Bu e-posta için hesap zaten var.");
       }
     } catch (e) {
       print("[C_ERROR]: $e");

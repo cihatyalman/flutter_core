@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class FirebaseDatabaseService {
-  DatabaseReference _rootRef;
+  final DatabaseReference _rootRef;
   FirebaseDatabaseService(this._rootRef);
 
   DatabaseReference get ref => _rootRef;

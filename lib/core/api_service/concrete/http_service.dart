@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -34,7 +36,7 @@ class HttpService implements IApiService {
   @override
   Future post({
     required String path,
-    required Map<String,dynamic> json,
+    required Map<String, dynamic> json,
     Map<String, String>? headers,
   }) async {
     try {

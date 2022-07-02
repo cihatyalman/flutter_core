@@ -3,7 +3,7 @@ import '../abstract/i_local_database_service.dart';
 
 class LocalDatabaseService implements ILocalDatabaseService {
   Database? _db;
-  String _dbName;
+  final String _dbName;
   LocalDatabaseService(this._dbName);
 
   @override

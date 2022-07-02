@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 11.06.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 02.07.2022 ]
 
 #
 
@@ -43,6 +43,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - shared_preferences
 - Map Service
   - google_maps_flutter
+  - geolocator
 - Other
   - path_provider
   - awesome_notifications
@@ -102,9 +103,10 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 #
 
-### Harita Servisi:
+### Harita Servisleri ( [map_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services) ):
 
-- #### [map_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_service)
+- #### [map_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/map_service)
+- #### [location_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/location_service)
 
 #
 

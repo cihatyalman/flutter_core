@@ -2,6 +2,8 @@
 // https://pub.dev/packages/video_player
 // https://pub.dev/packages/chewie
 
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -36,7 +38,7 @@ class VideoService {
       );
     } catch (e) {
       print("[C_ERROR]: $e");
-      return Center(child: Text("ERROR"));
+      return const Center(child: Text("ERROR"));
     }
   }
 }

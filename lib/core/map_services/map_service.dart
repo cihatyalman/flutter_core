@@ -63,7 +63,7 @@ class MapService {
       CameraPosition(
         target: latLng != null
             ? LatLng(latLng.latitude, latLng.longitude)
-            : LatLng(0, 0),
+            : const LatLng(0, 0),
         zoom: zoom ?? 14,
       ),
     ));

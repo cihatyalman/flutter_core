@@ -1,6 +1,8 @@
 // Documents and Integration
 // https://pub.dev/packages/awesome_notifications
 
+// ignore_for_file: avoid_print
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
