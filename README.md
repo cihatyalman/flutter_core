@@ -105,8 +105,8 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 ### Harita Servisleri ( [map_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services) ):
 
-- #### [map_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/map_service)
-- #### [location_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/location_service)
+- #### [map_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/map_service.dart)
+- #### [location_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/map_services/location_service.dart)
 
 #
 
