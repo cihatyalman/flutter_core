@@ -5,7 +5,7 @@
 // android/app/build.gradle
 //    minSdkVersion 20
 // android/build.gradle
-//    ext.kotlin_version = '1.5.10'
+//    ext.kotlin_version = '1.5.10' // update last version
 //    classpath 'com.android.tools.build:gradle:4.2.0'
 // android/gradle/wrapper/gradle-wrapper.properties
 //    distributionUrl=https\://services.gradle.org/distributions/gradle-6.9-all.zip

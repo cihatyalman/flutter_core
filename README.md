@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 02.07.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 27.08.2022 ]
 
 #
 
@@ -44,6 +44,7 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 - Map Service
   - google_maps_flutter
   - geolocator
+  - geocoding
 - Other
   - path_provider
   - awesome_notifications

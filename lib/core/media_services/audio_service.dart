@@ -81,7 +81,7 @@ class AudioService {
     required String path,
     Function()? finishCallback,
     Function()? playCallback,
-    double? pitch,
+    // double? pitch,
   }) async {
     this.path = path;
 
@@ -94,7 +94,7 @@ class AudioService {
         break;
     }
     final _duration = await player.load();
-    await player.setPitch(pitch ?? 1);
+    // await player.setPitch(pitch ?? 1);
     player.play();
     playCallback?.call();
     player.positionStream.listen((event) {
@@ -109,16 +109,16 @@ class AudioService {
   Future<void> stopAudio() async {
     await player.stop();
     player.seek(Duration.zero);
-    await player.setPitch(1);
+    // await player.setPitch(1);
   }
 
   Future<void> pauseAudio() async {
     await player.pause();
-    await player.setPitch(1);
+    // await player.setPitch(1);
   }
 
   Future<void> resumeAudio({Function()? callback, double? pitch}) async {
-    await player.setPitch(pitch ?? 1);
+    // await player.setPitch(pitch ?? 1);
     player.play();
   }
 
