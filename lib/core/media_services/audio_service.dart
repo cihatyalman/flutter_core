@@ -21,7 +21,7 @@ class AudioService {
   final record = FlutterSoundRecord();
   final recordTimer = CustomTimer();
   String? path;
-  final player = AudioPlayer();
+  var player = AudioPlayer();
 
   clear() async {
     path = null;
@@ -46,7 +46,7 @@ class AudioService {
       isPermission = false;
     }
     if (isPermission) {
-      record.start(path: dir!.path + "/audio.aac", encoder: AudioEncoder.AAC);
+      record.start(path: dir!.path + "/audio.mp3", encoder: AudioEncoder.AAC);
       recordTimer
         ..start()
         ..listen((duration) async {
@@ -109,6 +109,8 @@ class AudioService {
   Future<void> stopAudio() async {
     await player.stop();
     player.seek(Duration.zero);
+    player.dispose();
+    player = AudioPlayer();
     // await player.setPitch(1);
   }
 

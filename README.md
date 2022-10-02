@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 27.08.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 02.10.2022 ]
 
 #
 

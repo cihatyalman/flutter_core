@@ -2,13 +2,14 @@
 // https://pub.dev/packages/qr_flutter
 // *https://pub.dev/packages/qr_code_scanner
 
+// In order to use this plugin, please update the Gradle, Kotlin and Kotlin Gradle Plugin.
 // android/app/build.gradle
 //    minSdkVersion 20
 // android/build.gradle
-//    ext.kotlin_version = '1.5.10' // update last version
-//    classpath 'com.android.tools.build:gradle:4.2.0'
+//    ext.kotlin_version = '1.6.10'
+//    classpath 'com.android.tools.build:gradle:7.1.2'
 // android/gradle/wrapper/gradle-wrapper.properties
-//    distributionUrl=https\://services.gradle.org/distributions/gradle-6.9-all.zip
+//    distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-all.zip
 
 import 'dart:async';
 
@@ -17,6 +18,8 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRService {
+  Timer? timer;
+
   QrImage createQR(
     String data, {
     QrErrorBuilder? errorStateBuilder,
@@ -42,37 +45,8 @@ class QRService {
     );
   }
 
-  Future<String?> readQRPopUp(BuildContext context,
-      [Widget Function(QRView qrCamera)? callback]) async {
-    Barcode? barcode;
-    final qrCamera = QRView(
-      key: GlobalKey(debugLabel: 'QR'),
-      overlay: QrScannerOverlayShape(
-        borderColor: Colors.white,
-        borderLength: 48,
-        borderRadius: 12,
-      ),
-      onQRViewCreated: (controller) {
-        controller.scannedDataStream.listen((scanData) {
-          if (barcode == null) {
-            barcode = scanData;
-            Navigator.pop(context);
-          }
-        });
-      },
-    );
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return callback != null ? callback.call(qrCamera) : qrCamera;
-      },
-    );
-    return barcode?.code;
-  }
-
-  Timer? timer;
   QRViewController? controller;
-  QRView readQRCamera(void Function(Barcode? barcode) callback) {
+  QRView readQR(void Function(Barcode? barcode) callback) {
     Barcode? barcode;
     Barcode? oldBarcode;
     return QRView(
@@ -82,8 +56,9 @@ class QRService {
         borderLength: 48,
         borderRadius: 12,
       ),
-      onQRViewCreated: (controller) {
+      onQRViewCreated: (controller) async {
         this.controller = controller;
+        await controller.resumeCamera();
         controller.scannedDataStream.listen((scanData) {
           if (barcode == null) {
             barcode = scanData;
