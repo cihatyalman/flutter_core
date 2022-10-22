@@ -17,27 +17,28 @@ import '../utils/custom_timer.dart';
 final audioService = AudioService();
 
 class AudioService {
+  static final AudioService _instance = AudioService._internal();
+  factory AudioService() => _instance;
+  AudioService._internal();
+
   Directory? dir;
   final record = FlutterSoundRecord();
   final recordTimer = CustomTimer();
-  String? path;
+  String? recordPath;
   var player = AudioPlayer();
 
   clear() async {
-    path = null;
     await stopAudio();
-  }
-
-  Future<void> init() async {
-    dir = await getTemporaryDirectory();
-    clear();
+    recordPath = null;
   }
 
 // #region Record
   Future<bool> startRecord({
-    void Function(AudioPlayer? player)? callback,
-    Duration recordMaxDuration = const Duration(seconds: 10),
+    void Function(String? path)? callback,
+    Duration maxDuration = const Duration(seconds: 30),
+    String fileName = "audio.mp3",
   }) async {
+    dir ??= await getTemporaryDirectory();
     clear();
     bool isPermission = false;
     try {
@@ -46,14 +47,14 @@ class AudioService {
       isPermission = false;
     }
     if (isPermission) {
-      record.start(path: dir!.path + "/audio.mp3", encoder: AudioEncoder.AAC);
+      record.start(path: dir!.path + "/$fileName");
       recordTimer
         ..start()
         ..listen((duration) async {
           if (duration.inMilliseconds >=
               recordTimer.totalDuration.inMilliseconds) {
-            final _player = await stopRecord();
-            callback?.call(_player);
+            recordPath = await stopRecord();
+            callback?.call(recordPath);
           }
         });
       return true;
@@ -61,15 +62,14 @@ class AudioService {
     return false;
   }
 
-  Future<AudioPlayer?> stopRecord() async {
+  Future<String?> stopRecord() async {
     recordTimer.stop();
-    path = await record.stop();
-    if (path != null) {
-      await player.setFilePath(path!);
+    recordPath = await record.stop();
+    if (recordPath != null) {
+      await player.setFilePath(recordPath!);
       await player.seek(Duration.zero);
-      return player;
     }
-    return null;
+    return recordPath;
   }
 // #endregion
 
@@ -79,12 +79,11 @@ class AudioService {
   Future<Duration?> playAudio({
     int type = 0,
     required String path,
-    Function()? finishCallback,
     Function()? playCallback,
-    // double? pitch,
+    Function()? finishCallback,
+    double pitch = 1,
   }) async {
-    this.path = path;
-
+    await stopAudio();
     switch (type) {
       case 0:
         await player.setFilePath(path);
@@ -94,7 +93,7 @@ class AudioService {
         break;
     }
     final _duration = await player.load();
-    // await player.setPitch(pitch ?? 1);
+    await player.setPitch(pitch);
     player.play();
     playCallback?.call();
     player.positionStream.listen((event) {
@@ -108,21 +107,14 @@ class AudioService {
 
   Future<void> stopAudio() async {
     await player.stop();
-    player.seek(Duration.zero);
-    player.dispose();
+    await player.seek(Duration.zero);
+    await player.dispose();
     player = AudioPlayer();
-    // await player.setPitch(1);
   }
 
-  Future<void> pauseAudio() async {
-    await player.pause();
-    // await player.setPitch(1);
-  }
+  Future<void> pauseAudio() async => await player.pause();
 
-  Future<void> resumeAudio({Function()? callback, double? pitch}) async {
-    // await player.setPitch(pitch ?? 1);
-    player.play();
-  }
+  Future<void> resumeAudio({double pitch = 1}) async => player.play();
 
 // #endregion
 
@@ -144,6 +136,7 @@ class AudioService {
           break;
       }
       _duration = await tempPlayer.load();
+      tempPlayer.dispose();
     } catch (e) {
       return null;
     }

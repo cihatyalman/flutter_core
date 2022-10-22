@@ -24,7 +24,7 @@ class CustomTimer {
     Duration? totalDuration,
   }) async {
     _totalDuration = totalDuration ?? _totalDuration;
-    await stop();
+    stop();
     _pauseDuration = Duration.zero;
     _duration = startDuration;
     _timer = Timer.periodic(const Duration(milliseconds: 10), (_) {
@@ -38,7 +38,7 @@ class CustomTimer {
     });
   }
 
-  Future<void> stop() async {
+  void stop() {
     _timer?.cancel();
     // _timer = null;
     _duration = Duration.zero;
