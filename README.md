@@ -114,8 +114,8 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 ### Bildirim Servisleri ( [notification_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_services) ):
 
-- #### [awesome_notification_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/awesome_notification_service.dart)
-- #### [firebase_push_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/firebase_push_service.dart)
-- #### [onesignal_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/onesignal_service.dart)
+- #### [awesome_notification_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_services/awesome_notification_service.dart)
+- #### [firebase_push_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_services/firebase_push_service.dart)
+- #### [onesignal_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_services/onesignal_service.dart)
 
 #
