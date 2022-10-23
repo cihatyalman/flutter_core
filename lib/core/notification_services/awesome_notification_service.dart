@@ -6,9 +6,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
-final notificationService = NotificationService();
+final awesomeNotificationService = AwesomeNotificationService();
 
-class NotificationService {
+class AwesomeNotificationService {
   final _noti = AwesomeNotifications();
   AwesomeNotifications get noti => _noti;
 

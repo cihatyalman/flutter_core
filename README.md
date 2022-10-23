@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 22.10.2022 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 23.10.2022 ]
 
 #
 
@@ -35,7 +35,6 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - cloud_firestore
   - firebase_auth
   - firebase_analytics
-  - firebase_messaging
   - google_sign_in
 - Cache Service
   - hive
@@ -45,9 +44,12 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
   - google_maps_flutter
   - geolocator
   - geocoding
+- Notification Service
+  - awesome_notifications
+  - firebase_messaging
+  - onesignal_flutter
 - Other
   - path_provider
-  - awesome_notifications
   - screenshot
 
 #
@@ -64,7 +66,6 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
 - #### [Realtime Database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_database_service.dart)
 - #### [Firestore](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_firestore_service.dart)
 - #### [Firebase Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_auth_service.dart)
-- #### [Firebase Push](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_push_service.dart)
 - #### [Firebase Analytics](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_analytics_service.dart)
 - #### [Firebase Google Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_google_auth_service.dart)
 
@@ -111,8 +112,10 @@ QR oluşturmak veya qr okumak için kullanabilirsiniz.
 
 #
 
-### Bildirim Servisi:
+### Bildirim Servisleri ( [notification_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_services) ):
 
-- #### [notification_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service)
+- #### [awesome_notification_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/awesome_notification_service.dart)
+- #### [firebase_push_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/firebase_push_service.dart)
+- #### [onesignal_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/notification_service/onesignal_service.dart)
 
 #
