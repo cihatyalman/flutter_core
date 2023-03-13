@@ -3,12 +3,14 @@
 
 // ignore_for_file: avoid_print
 
-import 'package:core_base/core/cache_service/cache_service.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import '../other_services/cache_service.dart';
 
-const onesignalId = "YOUR_ONESIGNAL_ID";
+final oneSignalService = OneSignalService();
 
 class OneSignalService {
+  final onesignalId = "YOUR_ONESIGNAL_ID";
+
   init() async {
     await OneSignal.shared.consentGranted(true);
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
@@ -21,7 +23,7 @@ class OneSignalService {
         cacheService.box.put('playerId', changes.to.userId);
       });
 
-      // Forground
+      // Foreground
       OneSignal.shared.setNotificationWillShowInForegroundHandler((event) {
         print("[C_OneSignal_Foreground_Title]: ${event.notification.title}");
         print("[C_OneSignal_Foreground_Body]: ${event.notification.body}");
@@ -37,5 +39,18 @@ class OneSignalService {
             "[C_OneSignal_Opened_Data]: ${openedResult.notification.additionalData}");
       });
     });
+  }
+
+  Future<void> setExternalUserId(String externalUserId) async {
+    await removeExternalUserId();
+    OneSignal.shared.setExternalUserId(externalUserId).then((results) {
+      print("[C_OneSignal_UserId]: $results");
+    }).catchError((error) {
+      print("[C_OneSignal_UserId_Error]: $error");
+    });
+  }
+
+  Future<void> removeExternalUserId() async {
+    await OneSignal.shared.removeExternalUserId();
   }
 }

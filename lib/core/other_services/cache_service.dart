@@ -30,7 +30,7 @@ class CacheService {
   }
 
   Future<Directory> getDir() async {
-    final appDocumentDirectory = await getApplicationDocumentsDirectory();
-    return Directory('${appDocumentDirectory.path}/database');
+    final appTemporaryDirectory = await getTemporaryDirectory();
+    return Directory('${appTemporaryDirectory.path}/database');
   }
 }

@@ -8,15 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-final mapService = MapService();
-
 class MapService {
-  GoogleMapController? controller;
+  GoogleMapController? _controller;
   final markerListNotifier = ValueNotifier(List<Marker>.empty(growable: true));
+  final centerPosNotifier = ValueNotifier<CameraPosition?>(null);
 
   Widget build({
-    required CameraPosition initialCameraPosition,
+    required LatLng initialLatLng,
+    double initialZoom = 14,
     List<Marker>? markerList,
+    void Function(LatLng latLng)? onTap,
+    void Function(CameraPosition position)? onCameraMove,
+    void Function()? onCameraIdle,
   }) {
     if (markerList != null) {
       markerListNotifier.value = markerList;
@@ -25,13 +28,20 @@ class MapService {
       valueListenable: markerListNotifier,
       builder: (_, value, __) {
         return GoogleMap(
-          onMapCreated: (controller) => this.controller = controller,
-          initialCameraPosition: initialCameraPosition,
+          initialCameraPosition:
+              CameraPosition(target: initialLatLng, zoom: initialZoom),
+          onMapCreated: (controller) => _controller = controller,
+          onCameraMove: (position) {
+            centerPosNotifier.value = position;
+            onCameraMove?.call(position);
+          },
+          onCameraIdle: onCameraIdle,
           buildingsEnabled: false,
-          myLocationButtonEnabled: true,
+          myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
           mapToolbarEnabled: false,
           markers: value.toSet(),
+          onTap: onTap,
         );
       },
     );
@@ -58,14 +68,9 @@ class MapService {
     markerListNotifier.notifyListeners();
   }
 
-  void goLocation({LatLng? latLng, double? zoom}) {
-    controller?.animateCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(
-        target: latLng != null
-            ? LatLng(latLng.latitude, latLng.longitude)
-            : const LatLng(0, 0),
-        zoom: zoom ?? 14,
-      ),
+  void goLocation({required LatLng latLng, double zoom = 14}) {
+    _controller?.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(target: latLng, zoom: zoom),
     ));
   }
 }
