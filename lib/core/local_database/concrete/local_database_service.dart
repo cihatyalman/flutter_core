@@ -11,7 +11,7 @@ class LocalDatabaseService implements ILocalDatabaseService {
 
   @override
   Future<Database> initializeDb(String dbName) async {
-    String dbPath = (await getDatabasesPath()) + "/" + dbName;
+    String dbPath = "${await getDatabasesPath()}/$dbName";
     return await openDatabase(dbPath, version: 1);
   }
 

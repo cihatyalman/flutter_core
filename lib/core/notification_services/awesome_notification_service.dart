@@ -67,11 +67,11 @@ class AwesomeNotificationService {
     List<NotificationActionButton>? buttons,
     DateTime? showDate,
   }) {
-    final _id = id ?? DateTime.now().millisecondsSinceEpoch.remainder(100000);
+    id ??= DateTime.now().millisecondsSinceEpoch.remainder(100000);
     _noti.createNotification(
       content: NotificationContent(
         channelKey: 'basic_channel',
-        id: _id,
+        id: id,
         title: title,
         body: body,
         groupKey: groupKey,
@@ -86,6 +86,6 @@ class AwesomeNotificationService {
           ? null
           : NotificationCalendar.fromDate(date: showDate),
     );
-    return _id;
+    return id;
   }
 }

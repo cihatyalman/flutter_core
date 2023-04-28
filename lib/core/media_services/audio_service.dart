@@ -47,7 +47,7 @@ class AudioService {
       isPermission = false;
     }
     if (isPermission) {
-      record.start(path: dir!.path + "/$fileName");
+      record.start(path: "${dir!.path}/$fileName");
       recordTimer
         ..start()
         ..listen((duration) async {
@@ -92,7 +92,7 @@ class AudioService {
         await player.setUrl(path);
         break;
     }
-    final _duration = await player.load();
+    final duration = await player.load();
     await player.setPitch(pitch);
     player.play();
     playCallback?.call();
@@ -102,7 +102,7 @@ class AudioService {
         finishCallback?.call();
       }
     });
-    return _duration;
+    return duration;
   }
 
   Future<void> stopAudio() async {
@@ -122,26 +122,26 @@ class AudioService {
 
   // type: 0:path / 1:url
   Future<Duration?> getDuration({int type = 0, required String value}) async {
-    Duration? _duration;
+    Duration? duration;
     final tempPlayer = AudioPlayer();
     try {
       switch (type) {
         case 0:
-          _duration = await tempPlayer.setFilePath(value,
+          duration = await tempPlayer.setFilePath(value,
               initialPosition: const Duration(days: 1000));
           break;
         case 1:
-          _duration = await tempPlayer.setUrl(value,
+          duration = await tempPlayer.setUrl(value,
               initialPosition: const Duration(days: 1000));
           break;
       }
-      _duration = await tempPlayer.load();
+      duration = await tempPlayer.load();
       tempPlayer.dispose();
     } catch (e) {
       return null;
     }
 
-    return _duration;
+    return duration;
   }
 // #endregion
 }

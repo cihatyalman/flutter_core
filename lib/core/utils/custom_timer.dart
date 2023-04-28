@@ -61,9 +61,9 @@ class CustomTimer {
         _pauseDuration = _duration;
         stop();
       } else {
-        final _tempDuration = _pauseDuration;
+        final tempDuration = _pauseDuration;
         _pauseDuration = Duration.zero;
-        start(startDuration: _tempDuration);
+        start(startDuration: tempDuration);
       }
     }
   }

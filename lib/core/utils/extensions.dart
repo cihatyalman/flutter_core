@@ -13,8 +13,9 @@ extension DateTimeExtension on DateTime {
   String get toISOStringUtc => toUtc().toIso8601String();
   String get toISOString {
     final r = toIso8601String();
-    return r[r.length - 1] == "Z" ? r : r + "Z";
+    return r[r.length - 1] == "Z" ? r : "${r}Z";
   }
+
   String toTimestamp() {
     final timestamp = millisecondsSinceEpoch.toString();
     return timestamp.substring(0, timestamp.length - 3);
@@ -37,7 +38,7 @@ extension StringExtension on String {
       return null;
     }
   }
-  
+
   DateTime? get toDateLocal => DateTime.tryParse(this)?.toLocal();
   DateTime? get toDate => DateTime.tryParse(this);
 
