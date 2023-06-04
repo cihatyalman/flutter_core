@@ -18,6 +18,7 @@ class HttpService implements IApiService {
   @override
   Future get({
     required String path,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) async {
     if (headers != null) _headers.addEntries(headers.entries);
@@ -37,6 +38,7 @@ class HttpService implements IApiService {
   Future post({
     required String path,
     required Map<String, dynamic> json,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) async {
     try {
@@ -56,6 +58,7 @@ class HttpService implements IApiService {
   Future? postFormData({
     required String path,
     required Map<String, dynamic> json,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) async {}
 }

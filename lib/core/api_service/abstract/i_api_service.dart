@@ -1,6 +1,7 @@
 abstract class IApiService<T> {
   Future<T?>? get({
     required String path,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) {
     return null;
@@ -8,7 +9,8 @@ abstract class IApiService<T> {
 
   Future<T?>? post({
     required String path,
-    required Map<String,dynamic> json,
+    required Map<String, dynamic> json,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) {
     return null;
@@ -16,7 +18,8 @@ abstract class IApiService<T> {
 
   Future<T?>? postFormData({
     required String path,
-    required Map<String,dynamic> json,
+    required Map<String, dynamic> json,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) {
     return null;

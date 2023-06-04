@@ -63,13 +63,15 @@ class DioService implements IApiService {
   Future? postFormData({
     required String path,
     required Map<String, dynamic> json,
+    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) async {
     try {
       var response = await dio.post(
         path,
-        options: Options(headers: headers ?? this.headers),
         data: FormData.fromMap(json),
+        queryParameters: params,
+        options: Options(headers: headers ?? this.headers),
       );
       return jsonDecode(response.toString());
     } catch (e) {

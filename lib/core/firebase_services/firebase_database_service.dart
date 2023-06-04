@@ -18,6 +18,18 @@ class FirebaseDatabaseService {
     }
   }
 
+  Future<bool?> update({
+    required Map<String, dynamic> json,
+    String childPath = "/",
+  }) async {
+    try {
+      await _rootRef.child(childPath).update(json);
+      return true;
+    } catch (e) {
+      return null;
+    }
+  }
+
   Future<DatabaseEvent?> get({String childPath = "/"}) async {
     try {
       return await _rootRef.child(childPath).once();
