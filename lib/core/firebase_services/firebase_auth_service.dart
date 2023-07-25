@@ -54,4 +54,34 @@ class FirebaseAuthService {
       return false;
     }
   }
+
+  Future<bool> sendEmailVerification() async {
+    try {
+      await instance.currentUser?.sendEmailVerification();
+      return true;
+    } catch (e) {
+      print("[C_ERROR]: $e");
+      return false;
+    }
+  }
+
+  Future<bool> verifyBeforeUpdateEmail(String newEmail) async {
+    try {
+      await instance.currentUser?.verifyBeforeUpdateEmail(newEmail);
+      return true;
+    } catch (e) {
+      print("[C_ERROR]: $e");
+      return false;
+    }
+  }
+
+  Future<bool> sendPasswordResetEmail(String email) async {
+    try {
+      await instance.sendPasswordResetEmail(email: email);
+      return true;
+    } catch (e) {
+      print("[C_ERROR]: $e");
+      return false;
+    }
+  }
 }

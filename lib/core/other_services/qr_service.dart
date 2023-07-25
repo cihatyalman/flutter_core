@@ -18,7 +18,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRService {
-  Timer? timer;
+  Timer? _timer;
 
   QrImage createQR(
     String data, {
@@ -67,11 +67,11 @@ class QRService {
               oldBarcode = barcode;
             }
             barcode = null;
-            timer ??= Timer(
+            _timer ??= Timer(
               const Duration(seconds: 3),
               () {
                 oldBarcode = null;
-                timer = null;
+                _timer = null;
               },
             );
           }

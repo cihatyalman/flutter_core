@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 extension ByteExtension on Uint8List {
   Image get toImageFromBytes => Image.memory(this);
@@ -10,11 +11,10 @@ extension ByteExtension on Uint8List {
 }
 
 extension DateTimeExtension on DateTime {
-  String get toISOStringUtc => toUtc().toIso8601String();
-  String get toISOString {
-    final r = toIso8601String();
-    return r[r.length - 1] == "Z" ? r : "${r}Z";
-  }
+  String get toISOStringUtc =>
+      '${DateFormat("yyyy-MM-ddTHH:mm:ss").format(toUtc())}Z';
+  String get toISOString =>
+      '${DateFormat("yyyy-MM-ddTHH:mm:ss").format(this)}Z';
 
   String toTimestamp() {
     final timestamp = millisecondsSinceEpoch.toString();

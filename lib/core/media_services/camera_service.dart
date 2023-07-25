@@ -34,36 +34,48 @@ class CameraService {
   final _picker = ImagePicker();
 
   Future<File?> getImage(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(
-      source: source,
-      preferredCameraDevice: CameraDevice.rear,
-      imageQuality: quality,
-      maxWidth: maxWidth,
-      maxHeight: maxHeight,
-    );
-    return pickedFile != null ? File(pickedFile.path) : null;
+    try {
+      final pickedFile = await _picker.pickImage(
+        source: source,
+        preferredCameraDevice: CameraDevice.rear,
+        imageQuality: quality,
+        maxWidth: maxWidth,
+        maxHeight: maxHeight,
+      );
+      return pickedFile != null ? File(pickedFile.path) : null;
+    } catch (e) {
+      return null;
+    }
   }
 
   Future<List<File>?> getMultiImage() async {
-    final pickedFile = await _picker.pickMultiImage(
-      imageQuality: quality,
-      maxWidth: maxWidth,
-      maxHeight: maxHeight,
-    );
-    if (pickedFile != null) {
-      return pickedFile.map((e) => File(e.path)).toList();
-    } else {
+    try {
+      final pickedFile = await _picker.pickMultiImage(
+        imageQuality: quality,
+        maxWidth: maxWidth,
+        maxHeight: maxHeight,
+      );
+      if (pickedFile.isNotEmpty) {
+        return pickedFile.map((e) => File(e.path)).toList();
+      } else {
+        return null;
+      }
+    } catch (e) {
       return null;
     }
   }
 
   Future<File?> getVideo(ImageSource source, {Duration? maxDuration}) async {
-    final pickedFile = await _picker.pickVideo(
-      source: source,
-      preferredCameraDevice: CameraDevice.rear,
-      maxDuration: maxDuration,
-    );
-    return pickedFile != null ? File(pickedFile.path) : null;
+    try {
+      final pickedFile = await _picker.pickVideo(
+        source: source,
+        preferredCameraDevice: CameraDevice.rear,
+        maxDuration: maxDuration,
+      );
+      return pickedFile != null ? File(pickedFile.path) : null;
+    } catch (e) {
+      return null;
+    }
   }
 
 // #region Crop

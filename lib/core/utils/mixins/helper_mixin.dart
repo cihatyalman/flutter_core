@@ -25,7 +25,7 @@ mixin HelperMixin {
     } else if (differenceTime.inDays < 30) {
       result = "${differenceTime.inDays} gün";
     } else {
-      result = "${(differenceTime.inDays / 30).toStringAsFixed(0)} ay";
+      result = "${(differenceTime.inDays ~/ 30)} ay";
     }
     return "$result önce";
   }
