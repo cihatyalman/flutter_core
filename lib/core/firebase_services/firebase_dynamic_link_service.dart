@@ -1,6 +1,8 @@
 // Documents and Integration
 // *https://pub.dev/packages/firebase_dynamic_links
 
+// ignore_for_file: avoid_print
+
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 
 final dynamicLinkService = FirebaseDynamicLinkService(
@@ -30,14 +32,14 @@ class FirebaseDynamicLinkService {
   bool _listenCheck = false;
 
   Future<String> create({
-    String content = '',
+    required String link,
     String? title,
     String? description,
     String? imageUrl,
   }) async {
     final params = DynamicLinkParameters(
       uriPrefix: baseLink,
-      link: Uri.parse(baseLink + content),
+      link: Uri.parse(link),
       androidParameters: AndroidParameters(
         packageName: packageName,
         minimumVersion: androidMinimumVersion,
@@ -59,10 +61,15 @@ class FirebaseDynamicLinkService {
   }
 
   listen() {
+    FirebaseDynamicLinks.instance.getInitialLink().then((value) {
+      if (value != null) {
+        print("[C_link_data_0]: ${value.link.queryParameters["data"]}");
+      }
+    });
     if (!_listenCheck) {
       _listenCheck = true;
-      FirebaseDynamicLinks.instance.getInitialLink().then((value) {
-        // Listen
+      FirebaseDynamicLinks.instance.onLink.listen((event) {
+        print("[C_link_data_1]: ${event.link.queryParameters["data"]}");
       });
     }
   }

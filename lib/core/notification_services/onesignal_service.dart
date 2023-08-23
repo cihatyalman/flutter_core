@@ -11,33 +11,35 @@ final oneSignalService = OneSignalService();
 class OneSignalService {
   final onesignalId = "YOUR_ONESIGNAL_ID";
 
-  init() async {
-    await OneSignal.shared.consentGranted(true);
+  Future<void> init() async {
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
     await OneSignal.shared.setAppId(onesignalId);
 
-    OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
-      print("[C_OneSignal_Accepted]: $accepted");
-      OneSignal.shared.setSubscriptionObserver((changes) {
-        print("[C_OneSignal_PlayerId]: ${changes.to.userId}");
-        cacheService.box.put('playerId', changes.to.userId);
-      });
+    final accepted =
+        await OneSignal.shared.promptUserForPushNotificationPermission();
+    print("[C_OneSignal_Accepted]: $accepted");
+    if (!accepted) return;
 
-      // Foreground
-      OneSignal.shared.setNotificationWillShowInForegroundHandler((event) {
-        print("[C_OneSignal_Foreground_Title]: ${event.notification.title}");
-        print("[C_OneSignal_Foreground_Body]: ${event.notification.body}");
-        print(
-            "[C_OneSignal_Foreground_Data]: ${event.notification.additionalData}");
-      });
+    await OneSignal.shared.consentGranted(true);
+    OneSignal.shared.setSubscriptionObserver((changes) {
+      print("[C_OneSignal_PlayerId]: ${changes.to.userId}");
+      cacheService.box.put('playerId', changes.to.userId);
+    });
 
-      // Opened
-      OneSignal.shared.setNotificationOpenedHandler((openedResult) {
-        print("[C_OneSignal_Opened_Title]: ${openedResult.notification.title}");
-        print("[C_OneSignal_Opened_Body]: ${openedResult.notification.body}");
-        print(
-            "[C_OneSignal_Opened_Data]: ${openedResult.notification.additionalData}");
-      });
+    // Foreground
+    OneSignal.shared.setNotificationWillShowInForegroundHandler((event) {
+      print("[C_OneSignal_Foreground_Title]: ${event.notification.title}");
+      print("[C_OneSignal_Foreground_Body]: ${event.notification.body}");
+      print(
+          "[C_OneSignal_Foreground_Data]: ${event.notification.additionalData}");
+    });
+
+    // Opened
+    OneSignal.shared.setNotificationOpenedHandler((openedResult) {
+      print("[C_OneSignal_Opened_Title]: ${openedResult.notification.title}");
+      print("[C_OneSignal_Opened_Body]: ${openedResult.notification.body}");
+      print(
+          "[C_OneSignal_Opened_Data]: ${openedResult.notification.additionalData}");
     });
   }
 
