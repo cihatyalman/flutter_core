@@ -2,7 +2,7 @@
 // https://pub.dev/packages/screenshot
 // *https://pub.dev/packages/google_maps_flutter
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unrelated_type_equality_checks
+// ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member, unrelated_type_equality_checks, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
@@ -18,8 +18,9 @@ class MapService {
     double initialZoom = 14,
     List<Marker>? markerList,
     void Function(LatLng latLng)? onTap,
-    void Function(CameraPosition position)? onCameraMove,
     void Function()? onCameraIdle,
+    void Function()? onCameraMoveStarted,
+    void Function(CameraPosition position)? onCameraMove,
   }) {
     if (markerList != null) {
       markerListNotifier.value = markerList;
@@ -31,11 +32,12 @@ class MapService {
           initialCameraPosition:
               CameraPosition(target: initialLatLng, zoom: initialZoom),
           onMapCreated: (controller) => _controller = controller,
+          onCameraIdle: onCameraIdle,
+          onCameraMoveStarted: onCameraMoveStarted,
           onCameraMove: (position) {
             centerPosNotifier.value = position;
             onCameraMove?.call(position);
           },
-          onCameraIdle: onCameraIdle,
           buildingsEnabled: false,
           myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
@@ -48,8 +50,13 @@ class MapService {
   }
 
   Future<BitmapDescriptor> createMarkerIcon(Widget widget) async {
-    return BitmapDescriptor.fromBytes(await ScreenshotController()
-        .captureFromWidget(widget, delay: Duration.zero));
+    try {
+      return BitmapDescriptor.fromBytes(await ScreenshotController()
+          .captureFromWidget(widget, delay: Duration.zero));
+    } catch (e) {
+      print("[C_MapError]: $e");
+      return BitmapDescriptor.defaultMarker;
+    }
   }
 
   void addMarker(Marker marker) {
@@ -70,7 +77,7 @@ class MapService {
 
   void goLocation({required LatLng latLng, double zoom = 14}) {
     _controller?.animateCamera(CameraUpdate.newCameraPosition(
-      CameraPosition(target: latLng, zoom: zoom),
+      CameraPosition(target: latLng, zoom: zoom, tilt: 45),
     ));
   }
 }

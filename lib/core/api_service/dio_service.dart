@@ -2,7 +2,8 @@
 
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import '../abstract/i_api_service.dart';
+
+import 'i_api_service.dart';
 
 class DioService implements IApiService {
   final String baseUrl;
@@ -100,6 +101,8 @@ class _CustomInterceptors extends Interceptor {
 
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
+    // Todo: Custom Edit
+    if (err.response?.statusCode == 500) {}
     print(
         "StatusCode: ${err.response?.statusCode} => PATH: ${err.requestOptions.path}");
     return super.onError(err, handler);

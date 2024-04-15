@@ -12,6 +12,7 @@ class OneSignalService {
   final onesignalId = "YOUR_ONESIGNAL_ID";
 
   Future<void> init() async {
+    await OneSignal.shared.consentGranted(true);
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
     await OneSignal.shared.setAppId(onesignalId);
 
@@ -20,7 +21,6 @@ class OneSignalService {
     print("[C_OneSignal_Accepted]: $accepted");
     if (!accepted) return;
 
-    await OneSignal.shared.consentGranted(true);
     OneSignal.shared.setSubscriptionObserver((changes) {
       print("[C_OneSignal_PlayerId]: ${changes.to.userId}");
       cacheService.box.put('playerId', changes.to.userId);

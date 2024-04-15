@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 23.08.2023 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 15.04.2024 ]
 
 #
 
@@ -56,24 +56,18 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
         <ul>
           <li>awesome_notifications</li>
           <li>firebase_messaging</li>
-          <li>onesignal_flutter</li>
-        </ul>
-        <li>Shared Preferences Service</li>
-        <ul>
-          <li>shared_preferences</li>
-        </ul>
-        <li>Local Database</li>
-        <ul>
-          <li>sqflite</li>
+          <li>onesignal_flutter(^3.5.1)</li>
         </ul>
         <li>Other</li>
         <ul>
           <li>hive</li>
           <li>hive_flutter</li>
+          <li>sqflite</li>
           <li>qr_flutter</li>
-          <li>qr_code_scanner</li>
+          <li>mobile_scanner</li>
           <li>flutter_downloader</li>
           <li>crypto</li>
+          <li>shared_preferences</li>
         </ul>
         <li>Base</li>
         <ul>

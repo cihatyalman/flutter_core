@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import '../abstract/i_api_service.dart';
+import 'i_api_service.dart';
 
 class HttpService implements IApiService {
   final String _baseUrl;

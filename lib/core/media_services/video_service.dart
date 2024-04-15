@@ -2,75 +2,130 @@
 // https://pub.dev/packages/video_player
 // https://pub.dev/packages/chewie
 
-// ignore_for_file: avoid_print
-
 import 'dart:io';
+import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:chewie/chewie.dart';
+import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+final cacheVideoController = <String, VideoPlayerController>{};
+
+enum VideoServiceType { network, file, asset }
+
 class VideoService {
-  final bool autoPlay;
-  final bool startMute;
+  static Future<VideoPlayerController> videoInitialize({
+    required dynamic sourceData,
+    VideoServiceType videoType = VideoServiceType.network,
+  }) async {
+    final cacheKey = sourceData is File ? sourceData.path : sourceData;
+    if (cacheVideoController[cacheKey]?.value.isInitialized == true) {
+      return cacheVideoController[cacheKey]!;
+    } else if (cacheVideoController[cacheKey] == null) {
+      cacheVideoController[cacheKey] =
+          _getVideoController(videoType, sourceData);
+    }
+    await cacheVideoController[cacheKey]!.initialize();
+    return cacheVideoController[cacheKey]!;
+  }
 
-  VideoService({
-    this.autoPlay = false,
-    this.startMute = true,
-  });
+  static Widget videoPreview({
+    required dynamic sourceData,
+    VideoServiceType videoType = VideoServiceType.network,
+  }) {
+    final cacheKey = _getCacheKey(sourceData);
+    if (cacheVideoController[cacheKey]?.value.isInitialized == true) {
+      return _videoWidget(cacheVideoController[cacheKey]!);
+    }
+    return FutureBuilder<VideoPlayerController>(
+      future: videoInitialize(sourceData: sourceData, videoType: videoType),
+      builder: (context, snapshot) {
+        if (snapshot.data == null) return placeholder();
+        return _videoWidget(snapshot.data!);
+      },
+    );
+  }
 
-  VideoPlayerController? _videoController;
-  ChewieController? chewieController;
+  static Widget videoBuild({
+    required dynamic sourceData,
+    VideoServiceType videoType = VideoServiceType.network,
+    void Function(ChewieController controller)? callback,
+  }) {
+    final cacheKey = _getCacheKey(sourceData);
+    if (cacheVideoController[cacheKey]?.value.isInitialized == true) {
+      final cController1 = _chewieController(cacheVideoController[cacheKey]!);
+      callback?.call(cController1);
+      return _chewieWidget(cController1);
+    }
+    return FutureBuilder(
+      future: videoInitialize(sourceData: sourceData, videoType: videoType),
+      builder: (context, snapshot) {
+        if (snapshot.data == null) return placeholder();
+        final cController2 = _chewieController(snapshot.data!);
+        callback?.call(cController2);
+        return _chewieWidget(cController2);
+      },
+    );
+  }
 
-  bool _videoActive = false;
-
-  Future<Widget?> showVideoNetwork(String url) async =>
-      await _getChewie(VideoPlayerController.network(url));
-
-  Future<Widget?> showVideoAsset(String asset) async =>
-      _getChewie(VideoPlayerController.asset(asset));
-
-  Future<Widget?> showVideoFile(File file) async =>
-      _getChewie(VideoPlayerController.file(file));
-
-  Future<Widget?> _getChewie(VideoPlayerController controller) async {
-    _videoController = controller;
-    try {
-      _videoActive = true;
-      await controller.initialize();
-      chewieController = ChewieController(
-        aspectRatio: controller.value.aspectRatio,
-        videoPlayerController: controller,
-        autoPlay: autoPlay,
-        looping: true,
-        allowPlaybackSpeedChanging: false,
-        allowFullScreen: false,
-        // allowMuting: false,
-        allowedScreenSleep: false,
-        showOptions: false,
-        showControls: false,
-      );
-      if (_videoActive) {
-        if (startMute) {
-          chewieController?.setVolume(0);
-        }
-        return Chewie(controller: chewieController!);
-      }
-      await controller.pause();
-      await controller.dispose();
-      return null;
-    } catch (e) {
-      print("[C_ERROR]: $e");
-      return null;
+  static VideoPlayerController _getVideoController(
+      VideoServiceType videoType, dynamic sourceData) {
+    switch (videoType) {
+      case VideoServiceType.network:
+        return VideoPlayerController.networkUrl(Uri.parse(sourceData));
+      case VideoServiceType.file:
+        return VideoPlayerController.file(sourceData);
+      case VideoServiceType.asset:
+        return VideoPlayerController.asset(sourceData);
+      default:
+        return VideoPlayerController.networkUrl(sourceData);
     }
   }
 
-  void dispose() async {
-    _videoActive = false;
-    await _videoController?.pause();
-    await _videoController?.dispose();
-    chewieController?.dispose();
-    _videoController = null;
-    chewieController = null;
+  static String _getCacheKey(dynamic sourceData) =>
+      sourceData is File ? sourceData.path : sourceData;
+
+  static Widget placeholder() {
+    return Container(
+      color: Colors.grey.shade100,
+      padding: const EdgeInsets.all(56),
+      child: const Icon(Icons.downloading_rounded, color: Colors.grey),
+    );
+  }
+
+  static ChewieController _chewieController(VideoPlayerController controller) =>
+      ChewieController(
+        videoPlayerController: controller,
+        aspectRatio: controller.value.aspectRatio,
+        allowPlaybackSpeedChanging: false,
+        allowedScreenSleep: false,
+        showOptions: false,
+        showControls: false,
+        autoPlay: true,
+        looping: true,
+      );
+
+  static Widget _videoWidget(VideoPlayerController controller) {
+    return SizedBox(
+      width: controller.value.aspectRatio,
+      height: 1,
+      child: VideoPlayer(
+        key: ValueKey(
+            "${Random().nextInt(999).toString()}_${controller.dataSource}"),
+        controller,
+      ),
+    );
+  }
+
+  static Widget _chewieWidget(ChewieController cController) {
+    return SizedBox(
+      width: cController.videoPlayerController.value.aspectRatio,
+      height: 1,
+      child: Chewie(
+        key: ValueKey(
+            "${Random().nextInt(999).toString()}_${cController.videoPlayerController.dataSource}"),
+        controller: cController,
+      ),
+    );
   }
 }

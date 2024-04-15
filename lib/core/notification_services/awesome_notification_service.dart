@@ -41,18 +41,23 @@ class AwesomeNotificationService {
 
   void listen() {
     // Edit
-    _noti
-      ..actionStream.listen((event) {
-        print("[C_notiListenAction]: $event");
-        // if (event.buttonKeyPressed == "btn1") {
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: (ReceivedAction receivedAction) async {
+        print("[C_notiListenAction]: $receivedAction");
+        // if (receivedAction.buttonKeyPressed == "btn1") {
         //   print("[C_btn1]: Button 1 Clicked");
-        // } else if (event.buttonKeyPressed == "btn2") {
+        // } else if (receivedAction.buttonKeyPressed == "btn2") {
         //   print("[C_btn2]: Button 2 Clicked");
         // }
-      })
-      ..dismissedStream.listen((event) {
-        print("[C_notiListenDismissed]: $event");
-      });
+      },
+      onNotificationCreatedMethod:
+          (ReceivedNotification receivedNotification) async {},
+      onNotificationDisplayedMethod:
+          (ReceivedNotification receivedNotification) async {},
+      onDismissActionReceivedMethod: (ReceivedAction receivedAction) async {
+        print("[C_notiListenDismissed]: $receivedAction");
+      },
+    );
   }
 
   int create({
@@ -60,7 +65,7 @@ class AwesomeNotificationService {
     String? title,
     required String? body,
     String? groupKey,
-    NotificationLayout? layout,
+    NotificationLayout layout = NotificationLayout.Default,
     String? largeIcon,
     String? bigPicture,
     Color? color,

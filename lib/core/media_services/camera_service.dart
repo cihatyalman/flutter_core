@@ -90,13 +90,13 @@ class CameraService {
           toolbarTitle: title,
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: isAspectRatio,
-          hideBottomControls: false,
+          hideBottomControls: ratioX != null,
           showCropGrid: true,
         ),
         IOSUiSettings(
           title: title,
           aspectRatioLockEnabled: isAspectRatio,
-          aspectRatioPickerButtonHidden: true,
+          aspectRatioPickerButtonHidden: ratioX != null,
         ),
       ],
       // aspectRatioPresets: Platform.isAndroid
@@ -112,9 +112,6 @@ class CameraService {
       //         CropAspectRatioPreset.square,
       //         CropAspectRatioPreset.ratio3x2,
       //         CropAspectRatioPreset.ratio4x3,
-      //         CropAspectRatioPreset.ratio5x3,
-      //         CropAspectRatioPreset.ratio5x4,
-      //         CropAspectRatioPreset.ratio7x5,
       //         CropAspectRatioPreset.ratio16x9
       //       ],
     );

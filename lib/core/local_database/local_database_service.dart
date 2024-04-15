@@ -1,5 +1,5 @@
 import 'package:sqflite/sqflite.dart';
-import '../abstract/i_local_database_service.dart';
+import 'i_local_database_service.dart';
 
 class LocalDatabaseService implements ILocalDatabaseService {
   Database? _db;
