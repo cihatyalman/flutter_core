@@ -1,13 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FirebaseFirestoreService{
-  final FirebaseFirestore firestore;
-  final String collectionName;
-  FirebaseFirestoreService({required this.firestore, required this.collectionName});
+class FirebaseFirestoreService {
+  static final FirebaseFirestoreService _instance =
+      FirebaseFirestoreService._internal();
+  factory FirebaseFirestoreService() => _instance;
+  FirebaseFirestoreService._internal();
 
-  Future<String?> add({required Map<String, dynamic> json}) async {
+  final instance = FirebaseFirestore.instance;
+
+  Future<String?> add({
+    required String collectionName,
+    required Map<String, dynamic> json,
+  }) async {
     try {
-      var docRef = await firestore.collection(collectionName).add(json);
+      var docRef = await instance.collection(collectionName).add(json);
       return docRef.id;
     } catch (e) {
       return null;
@@ -16,11 +22,12 @@ class FirebaseFirestoreService{
 
   Future<String?> addToSubCollection({
     required String id,
+    required String collectionName,
     required String subCollectionName,
     required Map<String, dynamic> json,
   }) async {
     try {
-      var docRef = await firestore
+      var docRef = await instance
           .collection(collectionName)
           .doc(id)
           .collection(subCollectionName)
@@ -33,10 +40,11 @@ class FirebaseFirestoreService{
 
   Future<bool?> addWithId({
     required String id,
+    required String collectionName,
     required Map<String, dynamic> json,
   }) async {
     try {
-      await firestore.collection(collectionName).doc(id).set(json);
+      await instance.collection(collectionName).doc(id).set(json);
       return true;
     } catch (e) {
       return null;
@@ -45,12 +53,13 @@ class FirebaseFirestoreService{
 
   Future<bool?> addWithIdToSubCollection({
     required String id,
+    required String collectionName,
     required String subCollectionName,
     required String subId,
     required Map<String, dynamic> json,
   }) async {
     try {
-      await firestore
+      await instance
           .collection(collectionName)
           .doc(id)
           .collection(subCollectionName)
@@ -62,18 +71,21 @@ class FirebaseFirestoreService{
     }
   }
 
-  Future<bool?> delete({required String id}) async {
+  Future<bool?> delete({
+    required String collectionName,
+    required String id,
+  }) async {
     try {
-      await firestore.collection(collectionName).doc(id).delete();
+      await instance.collection(collectionName).doc(id).delete();
       return true;
     } catch (e) {
       return null;
     }
   }
 
-  Future<List?> get() async {
+  Future<List?> get({required String collectionName}) async {
     try {
-      var snapshot = await firestore.collection(collectionName).get();
+      var snapshot = await instance.collection(collectionName).get();
       return snapshot.docs.map((e) => e.data()).toList();
     } catch (e) {
       return null;
@@ -82,10 +94,11 @@ class FirebaseFirestoreService{
 
   Future<List?> getFromSubCollection({
     required String id,
+    required String collectionName,
     required String subCollectionName,
   }) async {
     try {
-      var snapshot = await firestore
+      var snapshot = await instance
           .collection(collectionName)
           .doc(id)
           .collection(subCollectionName)
@@ -96,9 +109,12 @@ class FirebaseFirestoreService{
     }
   }
 
-  Future<Map?> getWithId({required String id}) async {
+  Future<Map?> getWithId({
+    required String collectionName,
+    required String id,
+  }) async {
     try {
-      var snapshot = await firestore.collection(collectionName).doc(id).get();
+      var snapshot = await instance.collection(collectionName).doc(id).get();
       return snapshot.data();
     } catch (e) {
       return null;
@@ -107,11 +123,12 @@ class FirebaseFirestoreService{
 
   Future<Map?> getWithIdFromSubCollection({
     required String id,
+    required String collectionName,
     required String subColletionName,
     required String subId,
   }) async {
     try {
-      var snapshot = await firestore
+      var snapshot = await instance
           .collection(collectionName)
           .doc(id)
           .collection(subColletionName)
@@ -125,10 +142,11 @@ class FirebaseFirestoreService{
 
   Future<bool?> update({
     required String id,
+    required String collectionName,
     required Map<String, dynamic> json,
   }) async {
     try {
-      await firestore.collection(collectionName).doc(id).update(json);
+      await instance.collection(collectionName).doc(id).update(json);
       return true;
     } catch (e) {
       return null;

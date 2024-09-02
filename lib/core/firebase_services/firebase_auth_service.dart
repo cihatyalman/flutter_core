@@ -3,6 +3,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {
+  static final FirebaseAuthService _instance = FirebaseAuthService._internal();
+  factory FirebaseAuthService() => _instance;
+  FirebaseAuthService._internal();
+
   final instance = FirebaseAuth.instance;
 
   Future<User?> register({

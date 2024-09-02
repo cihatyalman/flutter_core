@@ -58,7 +58,6 @@ class HttpService implements IApiService {
   Future? postFormData({
     required String path,
     required Map<String, dynamic> json,
-    Map<String, dynamic>? params,
     Map<String, String>? headers,
   }) async {}
 }

@@ -1,17 +1,17 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class FirebaseDatabaseService {
-  final DatabaseReference _rootRef;
+  DatabaseReference? _rootRef;
   FirebaseDatabaseService(this._rootRef);
 
-  DatabaseReference get ref => _rootRef;
+  DatabaseReference get ref => _rootRef ??= FirebaseDatabase.instance.ref();
 
   Future<bool?> add({
     required Map<String, dynamic> json,
     String childPath = "/",
   }) async {
     try {
-      await _rootRef.child(childPath).set(json);
+      await ref.child(childPath).set(json);
       return true;
     } catch (e) {
       return null;
@@ -23,7 +23,7 @@ class FirebaseDatabaseService {
     String childPath = "/",
   }) async {
     try {
-      await _rootRef.child(childPath).update(json);
+      await ref.child(childPath).update(json);
       return true;
     } catch (e) {
       return null;
@@ -32,7 +32,7 @@ class FirebaseDatabaseService {
 
   Future<DatabaseEvent?> get({String childPath = "/"}) async {
     try {
-      return await _rootRef.child(childPath).once();
+      return await ref.child(childPath).once();
     } catch (e) {
       return null;
     }
@@ -40,7 +40,7 @@ class FirebaseDatabaseService {
 
   Future<bool?> delete({String childPath = "/"}) async {
     try {
-      await _rootRef.child(childPath).remove();
+      await ref.child(childPath).remove();
       return true;
     } catch (e) {
       return null;

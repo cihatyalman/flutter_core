@@ -7,12 +7,12 @@
 
 // ignore_for_file: avoid_print
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
-import '../utils/mixins/context_mixin.dart';
+import '../../main.dart';
 
-class FirebasePushService with ContextMixin {
+class FirebasePushService {
   final instance = FirebaseMessaging.instance;
 
   Future<String?> init() async {
@@ -31,7 +31,8 @@ class FirebasePushService with ContextMixin {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
         // Edit
-        ScaffoldMessenger.of(currentContext).showSnackBar(_snackBar(message));
+        ScaffoldMessenger.of(navigatorKey.currentContext!)
+            .showSnackBar(_snackBar(message));
       },
     );
   }
@@ -41,7 +42,8 @@ class FirebasePushService with ContextMixin {
     FirebaseMessaging.onMessageOpenedApp.listen(
       (RemoteMessage message) {
         // Edit
-        ScaffoldMessenger.of(currentContext).showSnackBar(_snackBar(message));
+        ScaffoldMessenger.of(navigatorKey.currentContext!)
+            .showSnackBar(_snackBar(message));
       },
     );
   }

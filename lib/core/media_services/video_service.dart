@@ -49,11 +49,13 @@ class VideoService {
   static Widget videoBuild({
     required dynamic sourceData,
     VideoServiceType videoType = VideoServiceType.network,
+    ChewieController? customController,
     void Function(ChewieController controller)? callback,
   }) {
     final cacheKey = _getCacheKey(sourceData);
     if (cacheVideoController[cacheKey]?.value.isInitialized == true) {
-      final cController1 = _chewieController(cacheVideoController[cacheKey]!);
+      final cController1 = customController ??
+          _chewieController(cacheVideoController[cacheKey]!);
       callback?.call(cController1);
       return _chewieWidget(cController1);
     }
@@ -61,7 +63,8 @@ class VideoService {
       future: videoInitialize(sourceData: sourceData, videoType: videoType),
       builder: (context, snapshot) {
         if (snapshot.data == null) return placeholder();
-        final cController2 = _chewieController(snapshot.data!);
+        final cController2 =
+            customController ?? _chewieController(snapshot.data!);
         callback?.call(cController2);
         return _chewieWidget(cController2);
       },
@@ -101,8 +104,8 @@ class VideoService {
         allowedScreenSleep: false,
         showOptions: false,
         showControls: false,
-        autoPlay: true,
-        looping: true,
+        autoPlay: false,
+        looping: false,
       );
 
   static Widget _videoWidget(VideoPlayerController controller) {
@@ -127,5 +130,12 @@ class VideoService {
         controller: cController,
       ),
     );
+  }
+
+  static void stopAllVideo({bool isBegin = true}) {
+    for (var element in cacheVideoController.values) {
+      element.pause();
+      if (isBegin) element.seekTo(Duration.zero);
+    }
   }
 }

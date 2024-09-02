@@ -4,7 +4,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import '../other_services/cache_service.dart';
+import '../storage_services/cache_service.dart';
 
 final oneSignalService = OneSignalService();
 
@@ -32,6 +32,9 @@ class OneSignalService {
       print("[C_OneSignal_Foreground_Body]: ${event.notification.body}");
       print(
           "[C_OneSignal_Foreground_Data]: ${event.notification.additionalData}");
+
+      event.complete(null);
+      // event.complete(event.notification);
     });
 
     // Opened

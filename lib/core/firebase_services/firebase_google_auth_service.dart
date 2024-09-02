@@ -4,18 +4,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleAuthService {
   final googleSignIn = GoogleSignIn(
-    scopes: [
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
-    ],
+    scopes: ['email', 'https://www.googleapis.com/auth/contacts.readonly'],
   );
   GoogleSignInAccount? currentUser;
 
   GoogleAuthService() {
     googleSignIn.onCurrentUserChanged.listen(
-      (account) {
-        currentUser = account;
-      },
+      (account) => currentUser = account,
     );
     googleSignIn.signInSilently();
   }

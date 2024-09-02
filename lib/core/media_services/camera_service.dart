@@ -19,7 +19,6 @@ class CameraService {
   final double maxHeight;
   final double? ratioX;
   final double? ratioY;
-  final bool isAspectRatio;
 
   CameraService({
     this.title = "Fotoğraf Düzenleyici",
@@ -28,7 +27,6 @@ class CameraService {
     this.maxHeight = 1920,
     this.ratioX,
     this.ratioY,
-    this.isAspectRatio = true,
   });
 
   final _picker = ImagePicker();
@@ -89,14 +87,13 @@ class CameraService {
         AndroidUiSettings(
           toolbarTitle: title,
           initAspectRatio: CropAspectRatioPreset.original,
-          lockAspectRatio: isAspectRatio,
-          hideBottomControls: ratioX != null,
+          lockAspectRatio: ratioX != null,
           showCropGrid: true,
         ),
         IOSUiSettings(
           title: title,
-          aspectRatioLockEnabled: isAspectRatio,
-          aspectRatioPickerButtonHidden: ratioX != null,
+          aspectRatioLockEnabled: ratioX != null,
+          aspectRatioPickerButtonHidden: true,
         ),
       ],
       // aspectRatioPresets: Platform.isAndroid
@@ -181,7 +178,6 @@ class CameraService {
     double? maxHeight,
     double? ratioX,
     double? ratioY,
-    bool? isAspectRatio,
   }) {
     return CameraService(
       title: title ?? this.title,
@@ -190,7 +186,6 @@ class CameraService {
       maxHeight: maxHeight ?? this.maxHeight,
       ratioX: ratioX,
       ratioY: ratioY,
-      isAspectRatio: isAspectRatio ?? this.isAspectRatio,
     );
   }
 }

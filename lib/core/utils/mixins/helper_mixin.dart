@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../../other_services/cache_service.dart';
+import '../../storage_services/cache_service.dart';
 
 mixin HelperMixin {
   Map<String, String> get getHeaders {
@@ -18,7 +18,9 @@ mixin HelperMixin {
 
     final differenceTime = DateTime.now().difference(datetime);
     String result = "";
-    if (differenceTime.inMinutes < 60) {
+    if (differenceTime.inMinutes < 1) {
+      return "şimdi";
+    } else if (differenceTime.inMinutes < 60) {
       result = "${differenceTime.inMinutes} dk";
     } else if (differenceTime.inHours < 48) {
       result = "${differenceTime.inHours} saat";
@@ -28,5 +30,26 @@ mixin HelperMixin {
       result = "${(differenceTime.inDays ~/ 30)} ay";
     }
     return "$result önce";
+  }
+
+  String passingTimeSort(DateTime? datetime) {
+    if (datetime == null) {
+      return " - ";
+    }
+
+    final differenceTime = DateTime.now().difference(datetime);
+    String result = "";
+    if (differenceTime.inMinutes < 1) {
+      result = "şimdi";
+    } else if (differenceTime.inMinutes < 60) {
+      result = "${differenceTime.inMinutes}dk";
+    } else if (differenceTime.inHours < 48) {
+      result = "${differenceTime.inHours}s";
+    } else if (differenceTime.inDays < 30) {
+      result = "${differenceTime.inDays}g";
+    } else {
+      result = "${(differenceTime.inDays ~/ 30)}ay";
+    }
+    return result;
   }
 }

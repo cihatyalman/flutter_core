@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 15.04.2024 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 02.09.2024 ]
 
 #
 
@@ -129,15 +129,15 @@ WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 
 #
 
-### Local Veritabanı ( [local_database](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/local_database) ):
+### Depolama Servisleri ( [storage_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/storage_services) ):
 
-Verilerinizi local bir veritabanında yönetmek istiyorsanız bu servisi kullanabilirsiniz.
+- #### [cache_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/storage_services/cache_service.dart): Verilerinizi cihazın ön belleğinde saklamak için kullanabilirsiniz.
+- #### [local_database_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/storage_services/local_database_service.dart): Verilerinizi local bir veritabanında yönetmek istiyorsanız bu servisi kullanabilirsiniz.
 
 #
 
 ### Diğer Servisler ( [other_services](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/other_services) ):
 
-- #### [cache_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/other_services/cache_service.dart): Verilerinizi cihazın ön belleğinde saklamak için kullanabilirsiniz.
 - #### [qr_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/other_services/qr_service.dart): QR oluşturmak veya okumak için kullanabilirsiniz.
 - #### [download_service](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/other_services/download_service.dart): Medya dosyalarınızı cihazınıza indirmek için kullanabilirsiniz.
 
