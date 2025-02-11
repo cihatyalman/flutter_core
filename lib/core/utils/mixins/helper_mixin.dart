@@ -4,11 +4,22 @@ import '../../storage_services/cache_service.dart';
 
 mixin HelperMixin {
   Map<String, String> get getHeaders {
-    final token = cacheService.box.get('token');
+    final token = cacheService.box.get('Token');
     return {
       HttpHeaders.authorizationHeader: token == null ? "" : "Bearer $token",
       'language': 'tr',
     };
+  }
+
+  Future<void> delay([int milliseconds = 500]) {
+    return Future<void>.delayed(Duration(milliseconds: milliseconds));
+  }
+
+  String toStringDouble(double value, {int fractionDigits = 2}) {
+    final res = value.toStringAsFixed(fractionDigits);
+    final r1 = res.split('.').last;
+    final r2 = List.generate(fractionDigits, (index) => 0).join();
+    return value.toStringAsFixed(r1 == r2 ? 0 : fractionDigits);
   }
 
   String passingTime(DateTime? datetime) {
@@ -49,6 +60,20 @@ mixin HelperMixin {
       result = "${differenceTime.inDays}g";
     } else {
       result = "${(differenceTime.inDays ~/ 30)}ay";
+    }
+    return result;
+  }
+
+  String? fileSize(int? byte) {
+    if (byte == null) return null;
+
+    String result = "";
+    if (byte < 1024) {
+      result = "$byte b";
+    } else if (byte < (1024 * 1024)) {
+      result = "${(byte / 1024).ceil()} kb";
+    } else if (byte < (1024 * 1024 * 1024)) {
+      result = "${(byte / (1024 * 1024)).ceil()} mb";
     }
     return result;
   }

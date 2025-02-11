@@ -1,10 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class FirebaseDatabaseService {
-  DatabaseReference? _rootRef;
-  FirebaseDatabaseService(this._rootRef);
+  DatabaseReference? rootRef;
+  FirebaseDatabaseService({this.rootRef});
 
-  DatabaseReference get ref => _rootRef ??= FirebaseDatabase.instance.ref();
+  DatabaseReference get ref => rootRef ??= FirebaseDatabase.instance.ref();
 
   Future<bool?> add({
     required Map<String, dynamic> json,

@@ -58,11 +58,14 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
           <li>firebase_messaging</li>
           <li>onesignal_flutter(^3.5.1)</li>
         </ul>
-        <li>Other</li>
+        <li>Storage Service</li>
         <ul>
           <li>hive</li>
           <li>hive_flutter</li>
           <li>sqflite</li>
+        </ul>
+        <li>Other</li>
+        <ul>
           <li>qr_flutter</li>
           <li>mobile_scanner</li>
           <li>flutter_downloader</li>

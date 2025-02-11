@@ -13,8 +13,7 @@ extension ByteExtension on Uint8List {
 extension DateTimeExtension on DateTime {
   String get toISOStringUtc =>
       '${DateFormat("yyyy-MM-ddTHH:mm:ss").format(toUtc())}Z';
-  String get toISOString =>
-      '${DateFormat("yyyy-MM-ddTHH:mm:ss").format(this)}Z';
+  String get toISOString => DateFormat("yyyy-MM-ddTHH:mm:ss").format(this);
 
   String toTimestamp() {
     final timestamp = millisecondsSinceEpoch.toString();

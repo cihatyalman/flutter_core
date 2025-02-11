@@ -12,6 +12,8 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+final cameraService = CameraService();
+
 class CameraService {
   final String title;
   final int quality;
@@ -89,28 +91,25 @@ class CameraService {
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: ratioX != null,
           showCropGrid: true,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9
+          ],
         ),
         IOSUiSettings(
           title: title,
           aspectRatioLockEnabled: ratioX != null,
           aspectRatioPickerButtonHidden: true,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9
+          ],
         ),
       ],
-      // aspectRatioPresets: Platform.isAndroid
-      //     ? [
-      //         CropAspectRatioPreset.original,
-      //         CropAspectRatioPreset.square,
-      //         CropAspectRatioPreset.ratio3x2,
-      //         CropAspectRatioPreset.ratio4x3,
-      //         CropAspectRatioPreset.ratio16x9,
-      //       ]
-      //     : [
-      //         CropAspectRatioPreset.original,
-      //         CropAspectRatioPreset.square,
-      //         CropAspectRatioPreset.ratio3x2,
-      //         CropAspectRatioPreset.ratio4x3,
-      //         CropAspectRatioPreset.ratio16x9
-      //       ],
     );
     return r == null ? null : File(r.path);
   }
@@ -139,11 +138,13 @@ class CameraService {
   Future<File?> compressFileFromFile(File file,
       {String? targetPath, int quality = 100}) async {
     targetPath ??= _getTargetPath(file.path, quality);
-    return await FlutterImageCompress.compressAndGetFile(
+    final xFile = await FlutterImageCompress.compressAndGetFile(
       file.absolute.path,
       targetPath,
       quality: quality,
     );
+
+    return xFile != null ? File(xFile.path) : null;
   }
 
   Future<Uint8List?> compressByteFromFile(File file,

@@ -9,6 +9,8 @@ class FirebaseAuthService {
 
   final instance = FirebaseAuth.instance;
 
+  User? get getCurrentUser => instance.currentUser;
+
   Future<User?> register({
     required String email,
     required String password,
@@ -40,7 +42,13 @@ class FirebaseAuthService {
       );
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
+      if (e.code == 'user-disabled') {
+        print(
+            "[C_firebase_signin]: Kullanıcı hesabı bir yönetici tarafından devre dışı bırakıldı.");
+      }
+      if (e.code == 'invalid-credential') {
+        print("[C_firebase_signin]: Geçersiz kimlik bilgisi.");
+      } else if (e.code == 'user-not-found') {
         print("[C_firebase_signin]: Bu e-posta için kullanıcı bulunamadı.");
       } else if (e.code == 'wrong-password') {
         print("[C_firebase_signin]: Bu kullanıcı için yanlış şifre sağlandı.");
