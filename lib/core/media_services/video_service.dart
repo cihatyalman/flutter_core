@@ -80,8 +80,6 @@ class VideoService {
         return VideoPlayerController.file(sourceData);
       case VideoServiceType.asset:
         return VideoPlayerController.asset(sourceData);
-      default:
-        return VideoPlayerController.networkUrl(sourceData);
     }
   }
 

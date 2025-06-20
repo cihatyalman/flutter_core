@@ -14,6 +14,7 @@ extension DateTimeExtension on DateTime {
   String get toISOStringUtc =>
       '${DateFormat("yyyy-MM-ddTHH:mm:ss").format(toUtc())}Z';
   String get toISOString => DateFormat("yyyy-MM-ddTHH:mm:ss").format(this);
+  String get toISOStringDate => DateFormat("yyyy-MM-dd").format(this);
 
   String toTimestamp() {
     final timestamp = millisecondsSinceEpoch.toString();
@@ -50,4 +51,9 @@ extension StringExtension on String {
       return null;
     }
   }
+}
+
+extension MapExtension on Map<String, dynamic> {
+  dynamic get(String key, {dynamic defaultValue}) =>
+      containsKey(key) ? this[key] : defaultValue;
 }
