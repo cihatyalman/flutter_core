@@ -33,7 +33,7 @@ mixin HelperMixin {
       return "şimdi";
     } else if (differenceTime.inMinutes < 60) {
       result = "${differenceTime.inMinutes} dk";
-    } else if (differenceTime.inHours < 48) {
+    } else if (differenceTime.inHours < 36) {
       result = "${differenceTime.inHours} saat";
     } else if (differenceTime.inDays < 30) {
       result = "${differenceTime.inDays} gün";
@@ -54,7 +54,7 @@ mixin HelperMixin {
       result = "şimdi";
     } else if (differenceTime.inMinutes < 60) {
       result = "${differenceTime.inMinutes}dk";
-    } else if (differenceTime.inHours < 48) {
+    } else if (differenceTime.inHours < 36) {
       result = "${differenceTime.inHours}s";
     } else if (differenceTime.inDays < 30) {
       result = "${differenceTime.inDays}g";

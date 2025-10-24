@@ -1,6 +1,6 @@
 # Flutter Core
 
-Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 20.06.2025 ]
+Projelerinizde kullanabileceğiniz çekirdek katman. [ Update: 24.10.2025 ]
 
 #
 
@@ -28,8 +28,8 @@ NOT: Gerekli kütüphaneler yüklü değilse hata alabilirsiniz.
           <li>cloud_firestore</li>
           <li>firebase_auth</li>
           <li>firebase_analytics</li>
-          <li>google_sign_in</li>
           <li>firebase_dynamic_links</li>
+          <li>google_sign_in</li>
         </ul>
         <li>Media Service</li>
         <ul>
@@ -103,8 +103,8 @@ WebAPI üzerinden veri alışverişi yapmak için kullanabilirsiniz.
 - #### [Firestore](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_firestore_service.dart)
 - #### [Firebase Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_auth_service.dart)
 - #### [Firebase Analytics](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_analytics_service.dart)
-- #### [Firebase Google Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_google_auth_service.dart)
 - #### [Firebase Dynamic Link](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/firebase_dynamic_link_service.dart)
+- #### [Google Auth](https://github.com/cihatyalman/flutter_core/tree/master/lib/core/firebase_services/google_auth_service.dart)
 
 #
 
